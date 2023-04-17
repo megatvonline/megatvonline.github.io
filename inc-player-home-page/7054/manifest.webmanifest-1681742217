@@ -1,0 +1,19 @@
+{
+  "short_name": "ESTAÃ‡ÃƒO 93 FM - JEQUIÃ‰ - BA",
+  "name": "ESTAÃ‡ÃƒO 93 FM - JEQUIÃ‰ - BA",
+  "icons": [
+    {
+      "src": "https://www.estacao93fm.com.br/wp-content/uploads/2021/05/logo-estacao-93-fm-1.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
+    }
+  ],
+  "description": "Radio App",
+  "start_url": "https://player.mestrestream.xyz/player-home-page/7054?app-home-page=1681744323",
+  "scope": "/player-home-page/7054",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#55fb5e",
+  "background_color": "#55fb5e"
+}
