@@ -25,8 +25,8 @@ document.onclick=reEnable
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+<link rel="stylesheet" href="/bootstrap/5.0.0-alpha2/css/bootstrap.min.css">
+<link rel="stylesheet" href="/ajax/libs/font-awesome/5.14.0/css/all.min.css">
 <style>
 html {
 margin: 0;
@@ -115,7 +115,7 @@ font-size: 1.2rem;
 </button>
 <div class="radio-volume pb-2">
 <div class="form-group">
-<input type="range" class="form-control-range" id="vol" value="75" maxvalue="100%">
+<input type="range" class="form-control-range" id="vol" value="100" maxvalue="100%">
 <span class="vol-size">100%</span>
 </div>
 </div>
@@ -123,8 +123,8 @@ font-size: 1.2rem;
 <h5 class="date mt-3">03:25:52 - 28/11</h5>
 </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.bundle.min.js"></script>
+<script src="/jquery-3.2.1.min.js"></script>
+<script src="/bootstrap/5.0.0-alpha2/js/bootstrap.bundle.min.js"></script>
 <script>
 const statusText = $('.status .text');
 const statusIcon = $('.status .icon');
@@ -142,7 +142,7 @@ $('.date').html(fTime);
 
 let status = false;
 
-player.prop('volume', 0.75); // default
+player.prop('volume', 0.100); // default
 
 $(document).ready(function() {
 if (player.attr('src') == '#') {
