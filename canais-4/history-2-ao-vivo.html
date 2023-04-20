@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="/npm/clappr@latest/dist/clappr.min.js"></script>
+<script src="/npm/clappr-chromecast-plugin@latest/dist/clappr-chromecast-plugin.min.js"></script>
 <SCRIPT LANGUAGE="JavaScript">
 <!-- Disable
 function disableselect(e){
@@ -30,6 +32,28 @@ background-color: #000000
 </head>
 <body>
 <h1 style="text-align:center"><span style="color:#FFFFFF">Assistir History 2 - Online - 24 Horas - Ao Vivo</span></h1>
-<center><iframe src="https://tv.tyflex.site/embed/627ed1eb-6a3b-4caf-bc9e-f21524df214d" name="iFrame Name" scrolling="No" allowfullscreen="" style="border: medium none; width: 840px;" __idm_id__="23207938" data-origwidth="100%" data-origheight="600px" width="100%" height="600px"></iframe></center>
+<center><div id="player"></div>
+<script>
+      var player = new Clappr.Player({
+        source: 'https://cdn2.connectbr.com.br/h2/tracks-v1a1/mono.m3u8',
+        width: '640',
+        height: '400',
+        plugins: [ChromecastPlugin],
+        parentId: '#player',
+        chromecast: {
+          appId: '9DFB77C0',
+          contentType: 'video/mp4',
+          media: {
+            type: ChromecastPlugin.Movie,
+            title: 'Awesome Hot Air Balloon Slackline',
+            subtitle: 'You won\'t get much closer to Skylining than this!'
+          },
+          customData: {
+            licenseURL: 'http://widevine/yourLicenseServer'
+          }
+        }
+      });
+</script>
+</center>      
 </body>
 </html>
