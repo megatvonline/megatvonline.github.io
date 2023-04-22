@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="/npm/clappr@latest/dist/clappr.min.js"></script>
+<script src="/npm/clappr-chromecast-plugin@latest/dist/clappr-chromecast-plugin.min.js"></script>
 <SCRIPT LANGUAGE="JavaScript">
 <!-- Disable
 function disableselect(e){
@@ -29,7 +31,29 @@ background-color: #000000
 </style>
 </head>
 <body>
-<h1 style="text-align:center"><span style="color:#FFFFFF">Canal Indisponível</span></h1>
-<center></center>      
+<h1 style="text-align:center"><span style="color:#FFFFFF">Assistir Universal TV - Online - 24 Horas - Ao Vivo</span></h1>
+<center><div id="player"></div>
+<script>
+      var player = new Clappr.Player({
+        source: 'https://ipzeruela.shop/UNIVERSAL-TV/tracks-v1a1/mono.m3u8?remote=177.70.243.116&token=3c51c5bf23611d38b95ef130fd45bb011874db32-5eea41263b640e234d7bc3719919b56a-1682180624-1682180524',
+        width: '640',
+        height: '400',
+        plugins: [ChromecastPlugin],
+        parentId: '#player',
+        chromecast: {
+          appId: '9DFB77C0',
+          contentType: 'video/mp4',
+          media: {
+            type: ChromecastPlugin.Movie,
+            title: 'Awesome Hot Air Balloon Slackline',
+            subtitle: 'You won\'t get much closer to Skylining than this!'
+          },
+          customData: {
+            licenseURL: 'http://widevine/yourLicenseServer'
+          }
+        }
+      });
+</script>
+</center>      
 </body>
 </html>
