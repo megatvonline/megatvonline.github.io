@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="/npm/clappr@latest/dist/clappr.min.js"></script>
+<script src="/npm/clappr-chromecast-plugin@latest/dist/clappr-chromecast-plugin.min.js"></script>
+<SCRIPT LANGUAGE="JavaScript">
+<!-- Disable
+function disableselect(e){
+return false
+}
+
+function reEnable(){
+return true
+}
+
+//if IE4+
+document.onselectstart=new Function ("return false")
+document.oncontextmenu=new Function ("return false")
+//if NS6
+if (window.sidebar){
+document.onmousedown=disableselect
+document.onclick=reEnable
+}
+//-->
+</script>
+<title>FX - Ao Vivo</title>
+<style>
+body {
+background-color: #000000
+}
+</style>
+</head>
+<body>
+<h1 style="text-align:center"><span style="color:#FFFFFF">Assistir FX - Online - 24 Horas - Ao Vivo</span></h1>
+<center><div id="player"></div>
+<script>
+      var player = new Clappr.Player({
+        source: 'https://play.ozooplay.com/playlist/SzRvbUVIOG1Gb2h1YjRUeTJYdmgyREVTMTNiQWM3cmpyMmdmUGhaVndmZ09yWmhaQVVNV1hzTHRDNHl5UGw3eHZzVHNJK3lKQ0dvRTFoSW53ajBsMXc9PQ,,/master.m3u8?token=N2lwM1grcnRSMmtNQ25CaitmcjZiZ2xUakFXQ2t2emFhaDY5emJtUVM3T3pNcHlyMlh4OE1rUllrZ3VCQ1p1R2Qzb2xqVVliMUhLS3p0dHBXZDdMN2c9PQ',
+        width: '640',
+        height: '400',
+        plugins: [ChromecastPlugin],
+        parentId: '#player',
+        chromecast: {
+          appId: '9DFB77C0',
+          contentType: 'video/mp4',
+          media: {
+            type: ChromecastPlugin.Movie,
+            title: 'Awesome Hot Air Balloon Slackline',
+            subtitle: 'You won\'t get much closer to Skylining than this!'
+          },
+          customData: {
+            licenseURL: 'http://widevine/yourLicenseServer'
+          }
+        }
+      });
+</script>
+</center>      
+</body>
+</html>
