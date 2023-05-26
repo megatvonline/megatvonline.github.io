@@ -1,0 +1,50 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.programacao-container {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.programa {
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+}
+
+.programa:last-child {
+    border-bottom: none;
+}
+
+.titulo {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.botao-ao-vivo {
+    display: inline-block;
+    padding: 4px 10px;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    border-radius: 3px;
+    margin-right: 10px;
+}
+
+.info {
+    color: #888;
+    margin-bottom: 5px;
+}
+
+.descricao {
+    color: #555;
+}
+
+.ao-vivo-agora {
+    background-color: red;
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+}
