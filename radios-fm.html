@@ -1,17 +1,25 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" href="" sizes="32x32">
-<link rel="icon" href="" sizes="192x192">
-<title>Assistir TV Online Grátis Ao Vivo</title>
-<link rel="stylesheet" href="/css/selectize.min.css?v=1.0.0.0_developermode_133ab6b61db5522b7ce4a7c12ca4e079">
-<link rel="stylesheet" href="/css/player.css?v=1.0.0.0_developermode_133ab6b61db5522b7ce4a7c12ca4e079">
-<link rel="stylesheet" href="/css/lancaster_io.css?v=1.0.0.0_developermode_133ab6b61db5522b7ce4a7c12ca4e079">
-<link rel="stylesheet" href="/css/remixicon.css?v=1.0.0.0_developermode_133ab6b61db5522b7ce4a7c12ca4e079">
-<script src="/js/jquery.min.js?v=1.0.0.0_developermode_133ab6b61db5522b7ce4a7c12ca4e079"></script>
+  <meta charset="UTF-8">
+  <title>Assistir TV Online Grátis Ao Vivo</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5983031143942869"
+     crossorigin="anonymous"></script>
+
+    <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-03JDNZLYJM"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-03JDNZLYJM');
+  </script>
 <SCRIPT LANGUAGE="JavaScript">
 <!-- Disable
 function disableselect(e){
@@ -32,77 +40,147 @@ document.onclick=reEnable
 }
 //-->
 </script>
+<style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #0f2048;
+}
+
+li {
+  float: left;
+  border-right:1px solid #0f2048;
+}
+
+li:last-child {
+  border-right: none;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #0f2048;
+}
+</style>
 </head>
 <body ondragstart="return false">
-<div class="tvchannels_select"><div class="tvchannels_title">Selecione uma Rádio</div><div class="tvchannel_container"><div class="tvchannel_item cat_"><a class="tvchannel_item_link" href="https://megatvonline.github.io/radios/estacao-93-fm-ao-vivo.html" title="Estação 93 FM"><img src="https://megatvonline.github.io/logos/estacao-93-fm.png" alt="Estação 93 FM"></a><a class="tvchannel_name" href="https://megatvonline.github.io/radios/estacao-93-fm-ao-vivo.html" title="Estação 93 FM"><b>Estação 93 FM</b></a></div><div class="tvchannel_item cat_"><a class="tvchannel_item_link" href="https://megatvonline.github.io/radios/95-fm-oficial-ao-vivo.html" title="95 FM Oficial"><img src="https://megatvonline.github.io/logos/95-fm-oficial.png" alt="95 FM Oficial"></a><a class="tvchannel_name" href="https://megatvonline.github.io/radios/95-fm-oficial-ao-vivo.html" title="95 FM Oficial"><b>95 FM Oficial</b></a></div><div class="tvchannel_item cat_"><a class="tvchannel_item_link" href="https://megatvonline.github.io/radios/jequie-fm-ao-vivo.html" title="Jequié FM 89,7"><img src="https://megatvonline.github.io/logos/jequie-fm.png" alt="Jequié FM 89,7"></a><a class="tvchannel_name" href="https://megatvonline.github.io/radios/jequie-fm-ao-vivo.html" title="Jequié FM 89,7"><b>Jequié FM 89,7</b></a></div><div class="tvchannel_item cat_"><a class="tvchannel_item_link" href="https://megatvonline.github.io/radios/radio-povo-ao-vivo.html" title="Rádio Povo"><img src="https://megatvonline.github.io/logos/radio-povo.png" alt="Rádio Povo"></a><a class="tvchannel_name" href="https://megatvonline.github.io/radios/radio-povo-ao-vivo.html" title="Rádio Povo"><b>Rádio Povo</b></a></div><div class="tvchannel_item cat_"><a class="tvchannel_item_link" href="https://megatvonline.github.io/radios/radio-disney-ao-vivo.html" title="Rádio Disney"><img src="https://megatvonline.github.io/logos/radio-disney.png" alt="Rádio Disney"></a><a class="tvchannel_name" href="https://megatvonline.github.io/radios/radio-disney-ao-vivo.html" title="Rádio Disney"><b>Rádio Disney</b></a></div></div></div>
-<script src="/js/selectize.min.js?v=1.0.0.0_developermode_133ab6b61db5522b7ce4a7c12ca4e079"></script>
-<script>
-            var categorys;
-            $(window).on("load", function() {
-                // Inicia o selectize de categorias
-                categorys = $("#categorys").selectize({});
-            });
-
-            $("#categorys").on("change", function(){
-                let value = $(this).val();
-
-                if ( value == "all" ) {
-                    $(".tvchannel_item").show();
-                } else {
-                    $(`.tvchannel_item`).hide();
-                    $(`.${value}`).show();
-                }
-            });
-</script>
-
-<script>
-        var HOME_URL = 'https://megatvonline.github.io';
-</script>
-<script src="/js/rteam_native_notify.js?v=1.0.0.0_developermode_133ab6b61db5522b7ce4a7c12ca4e079"></script>
-<script>
-        var embedder_client_ip = '';
-        function getIP(json) {
-            embedder_client_ip = json.ip;
-        }
-        
-        // Banner
-        $(document).ready(function() {
-            if ( $('.embedder_especial').length > 0 ) {
-                $('.embedder_especial').css({'display': 'flex'});
-            }
-        });
-
-        $(document).on('click', '.embedder_especial_close', function() {
-            $('.embedder_especial').hide();
-        });
-
-        // Embedder Info
-        $(document).on('click', '.embedder_info', function() {
-            $('body').append(`
-                <div class="embedder_especial embedder_info_msg" style="display: flex">
-                <div class="embedder_especial_content" style="padding: 30px 20px;">
-                <div class="embedder_especial_close2"><i class="ri-close-line"></i></div>
-                                                                                   </div>
-                                                                                   </div>
-            `);
-        });
-
-        $(document).on('click', '.embedder_especial_close2', function() {
-            $('.embedder_especial.embedder_info_msg').remove();
-        });
-    </script>
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-81463906-8"></script>
-    <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-81463906-8');
-</script>
-
-<div style="display:none;">
-<script id="_wauo4c">var _wau = _wau || []; _wau.push(["dynamic", "megatvonline", "o4c", "c4302bffffff", "small"]);</script>
+<ul>
+<li><a class="active" href="radios-fm" title="Rádios FM" alt="Rádios FM"><b>Rádios FM</b></a></li>  
+<li><a class="active" href="megatvrepo" title="Mega TV Repo" alt="Mega TV Repo"><b>Mega TV Repo</b></a></li>
+<li><a class="active" href="todos-canais" title="+ Canais" alt="+ Canais"><b>+ Canais</b></a></li>
+</ul>  
+  <center><div class="header">
+    <div class="container">
+      <h1>Selecione um Canal</h1>
+      <form method="get">
+       
+      </form>
+    </div>
+  </div></center>
+  
+<div class="container">
+  <div class="canais">
+                  <div class="canal">
+          <div class="imagem">
+            <img src="logos/estacao-93-fm.png" title="Estação 93 FM" alt="Estação 93 FM">
+          </div>
+          <div class="informacoes">
+            <h2><b>Globo RJ</b></h2>
+            <p><b>Canais Abertos</b></p>
+            <a href="radios/estacao-93-fm-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Ouvir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/globo-rj" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+    
+              <div class="canal">
+          <div class="imagem">
+            <img src="logos/95-fm-oficial.png" title="95 FM Oficial" alt="95 FM Oficial">
+          </div>
+          <div class="informacoes">
+            <h2><b>Globo SP</b></h2>
+            <p><b>Canais Abertos</b></p>
+            <a href="radios/95-fm-oficial-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Ouvir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/globo-sp" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+    
+              <div class="canal">
+          <div class="imagem">
+            <img src="logos/jequie-fm.png" title="Jequié FM 89,7" alt="Jequié FM 89,7">
+          </div>
+          <div class="informacoes">
+            <h2><b>Globo Nordeste</b></h2>
+            <p><b>Canais Abertos</b></p>
+            <a href="radios/jequie-fm-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Ouvir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/globo-nordeste-hd" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+    
+              <div class="canal">
+          <div class="imagem">
+            <img src="logos/radio-povo.png" title="Rádio Povo" alt="Rádio Povo">
+          </div>
+          <div class="informacoes">
+            <h2><b>SBT</b></h2>
+            <p><b>Canais Abertos</b></p>
+            <a href="radio-povo-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Ouvir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/sbt" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+    
+              <div class="canal">
+          <div class="imagem">
+            <img src="logos/radio-disney.png" title="Rádio Disney" alt="Rádio Disney">
+          </div>
+          <div class="informacoes">
+            <h2><b>Band</b></h2>
+            <p><b>Canais Abertos</b></p>
+            <a href="radios/radio-disney-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Ouvir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/band" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+            </div>
 </div>
+
+<!-- Histats.com  START  (aync)-->
+<script type="text/javascript">var _Hasync= _Hasync|| [];
+_Hasync.push(['Histats.start', '1,4766349,4,0,0,0,00010000']);
+_Hasync.push(['Histats.fasi', '1']);
+_Hasync.push(['Histats.track_hits', '']);
+(function() {
+var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
+hs.src = ('//s10.histats.com/js15_as.js');
+(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
+})();</script>
+<noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?4766349&101" alt="" border="0"></a></noscript>
+<!-- Histats.com  END  -->
+
 </body>
 </html>
