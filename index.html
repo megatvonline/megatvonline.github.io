@@ -1786,10 +1786,6 @@ redecanais.zip/" class="logo-others mr-1 mr-lg-3">
 </div>
 </div>
 </section>
-<center>
-<ins class="7236739a" data-key="f41d5bbfc4ee2977fc0cf92a149d8d24"></ins>
-<script async src="https://servetraff.com/44fdb324.js"></script>
-</center>
 
 <footer>
 <div class="container d-flex justify-content-center">
@@ -1799,61 +1795,6 @@ Codigo do Site Reservados!
 </p>
 </div>
 </div>
-<iframe src="./contador.php?static=true" frameborder="0" scrolling="no" width="0" height="0"></iframe>
 </footer>
-<script>
-        //Loop through elements .channel to add a counter to each .number element
-        //The counter needs to be 3 digits long, so we add a 0 to the left if the number is less than 10
-        // var channel = document.querySelectorAll('.channel');
-        // for (var i = 0; i < channel.length; i++) {
-        //     var number = channel[i].querySelector('.number');
-        //     var numberValue = i + 1;
-        //     if (numberValue < 10) {
-        //         number.innerHTML = '00' + numberValue;
-        //     } else if (numberValue < 100) {
-        //         number.innerHTML = '0' + numberValue;
-        //     }
-        // }
-
-        //Filter .channels and .number by search-channel input
-        var searchChannel = document.querySelector('.search-channel-input');
-        searchChannel.addEventListener('input', function () {
-            var filter = searchChannel.value.toUpperCase();
-            var channel = document.querySelectorAll('.channel');
-            var number = document.querySelectorAll('.number');
-            for (var i = 0; i < channel.length; i++) {
-                var channelName = channel[i].querySelector('.channel .name span:nth-child(2)');
-                var channelNameValue = channelName.innerHTML.toUpperCase();
-                //check if contains number inside number variable
-                var numberExists = number[i].innerHTML.indexOf(filter) > -1;
-
-                if (channelNameValue.indexOf(filter) > -1 || numberExists) {
-                    channel[i].style.display = '';
-                } else {
-                    channel[i].style.display = 'none';
-                }
-            }
-        });
-
-        if(window.location.href.indexOf(".html") > -1){
-             //Scroll just a.active inside .list-channel to the top of the .list-channel and not scroll the window
-            var listChannel = document.querySelector('.list-channels');
-            var active = document.querySelector('.channel a.active');
-            listChannel.scrollTop = active.offsetTop - listChannel.offsetTop;
-        }
-
-        //when click on .options remove .active and add .active to the clicked element
-        var options = document.querySelectorAll('.options');
-            for (var i = 0; i < options.length; i++) {
-                options[i].addEventListener('click', function () {
-                    var active = document.querySelector('.options.active');
-                    active.classList.remove('active');
-                    this.classList.add('active');
-                });
-            }
-
-       
-
-    </script>
 </body>
 </html>
