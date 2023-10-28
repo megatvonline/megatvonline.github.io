@@ -297,8 +297,62 @@
             }
         }
     </style>
+<SCRIPT LANGUAGE="JavaScript">
+<!-- Disable
+function disableselect(e){
+return false
+}
+
+function reEnable(){
+return true
+}
+
+//if IE4+
+document.onselectstart=new Function ("return false")
+document.oncontextmenu=new Function ("return false")
+//if NS6
+if (window.sidebar){
+document.onmousedown=disableselect
+document.onclick=reEnable
+}
+//-->
+</script>	
+<style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #0f2048;
+}
+
+li {
+  float: left;
+  border-right:1px solid #0f2048;
+}
+
+li:last-child {
+  border-right: none;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #0f2048;
+}
+</style>	
 </head>
-<body>
+<body ondragstart="return false">
 <header id="header">
 <section class="container-fluid px-5 d-flex align-items-center">
 <div class="col-1 p-0 mr-2 d-flex">
@@ -327,6 +381,12 @@
 </section>
 </header>
 <section id="player-container">
+<ul>
+<li><a class="active" href="radios-fm" title="Rádios FM" alt="Rádios FM"><b>Rádios FM</b></a></li>  
+<li><a class="active" href="megatvrepo" title="Mega TV Repo" alt="Mega TV Repo"><b>Mega TV Repo</b></a></li>
+<li><a class="active" href="mais-canais" title="+ Canais" alt="+ Canais"><b>+ Canais</b></a></li>
+<li><a class="active" href="filmes" title="Filmes" alt="Filmes"><b>Filmes</b></a></li>  
+</ul>	
 <div class="container-fluid mt-3 px-4">
 <div class="d-lg-flex full-container">
 <section id="player" class="col-lg-8 col-xs-12 p-0">
