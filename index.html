@@ -1,1697 +1,910 @@
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta http-equiv="title" content="📺 Assistir TV Online Grátis Ao Vivo">
-<meta http-equiv="description" content="">
-<meta http-equiv="keyworks" content="">
-<meta property="og:title" content="">
-<meta property="og:description" content="">
-<meta property="og:image" content="">
-<meta property="og:url" content="https://megatvonline.github.io">
-<meta property="og:type" content="website">
-<title>📺 Assistir TV Online Grátis Ao Vivo</title>
-<link rel="shortcut icon" href="">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
-<style>
-        body {
-            background: #222;
-            line-height: 0;
-        }
-
-        #header {
-            height: 70px;
-            background-color: rgba(22, 22, 22, .8);
-            border-bottom: 1px solid rgba(44, 44, 44, .9);
-            width: 100%;
-            display: flex;
-            line-height: 70px;
-            font-size: 22px;
-            position: fixed;
-            top: 0;
-            z-index: 10;
-        }
-
-        #header i {
-            color: #999;
-        }
-
-        #header i:hover {
-            color: #2631cd;
-        }
-
-        #header .logo img {
-            max-width: 108px;
-        }
-
-        #player-container {
-            border-radius: 10px;
-            margin-top: 70px;
-            overflow: hidden;
-        }
-
-        .full-container {
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        #player {
-            height: 550px;
-        }
-
-        #player iframe {
-            width: 100%;
-			height: 100%;
-            <!--height: calc(100% - 50px);-->
-        }
-
-        #options-player {
-            background-color: #0006ff94;
-        }
-
-        #options-player .options {
-            display: inline-block;
-            margin: 5px 2.5px;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 14px;
-            background-color: rgba(0, 0, 0, .4);
-            height: 40px;
-            line-height: 40px;
-            padding: 0 10px;
-            color: #fff;
-            text-decoration: none;
-        }
-
-        #options-player .options.active {
-            background-color: rgba(0, 0, 0, .8);
-        }
-
-        /* SEARCH CHANNEL */
-
-        .search-channel input {
-            height: 60px;
-            font-size: 20px;
-        }
-
-        /* CHANNEL LIST */
-
-        .list-channels {
-            height: 491px;
-        }
-
-        .channel a {
-            display: flex;
-            align-items: center;
-            background-color: #111111;
-            border-bottom: #333 solid 1px;
-            cursor: pointer;
-            text-decoration: none;
-        }
-
-        .channel a:hover {
-            background-color: #181818
-        }
-
-        .channel a.active {
-            background-color: #333333
-        }
-
-        .channel span {
-            line-height: 1.5;
-        }
-
-        .channel a.active span {
-            display: block !important;
-        }
-
-        .channel .number {
-            flex: 1;
-            font-size: 25px;
-            font-weight: 700;
-            line-height: 80px;
-            color: #fff;
-            padding: 0 5px;
-        }
-
-        .channel img {
-            max-width: 100%;
-        }
-
-        .channel .logo {
-            flex: 3;
-            max-width: 150px;
-        }
-
-        .logo-others img {
-            min-width: 70px;
-            max-width: 110px;
-            width: 100%;
-        }
-
-        .logo-others:nth-child(1) img{
-            min-width: 72px;
-        }
-
-        .channel .name {
-            flex: 3;
-            color: #fff;
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        /* ALERT BOX */
-
-        .alert .bg-danger {
-            background-color: #f81810 !important;
-        }
-
-        .alert .card-text {
-            font-weight: 700;
-            font-family: Tahoma;
-            font-size: large;
-            text-align: center;
-            line-height: 1.5;
-            font-size: 18px;
-        }
-
-
-        .alert .card-icons img {
-            max-width: 33px;
-        }
-
-        .alert .whatsapp a {
-            text-decoration: none;
-            font-weight: bold;
-            color: #fff;
-            line-height: 1.5;
-            min-width: 33px;
-        }
-
-        .alert .whatsapp a span {
-            display: block;
-        }
-
-        .alert .whatsapp img {
-            max-width: 33px;
-        }
-
-        /* set max width for mobile */
-        @media (max-width: 767px){
-            #header .logo img {
-                min-width: 70px !important;
-                max-width: 150px;
-                width: 100%;
-            }
-
-            .logo-others img{
-                width: 72px;
-            }
-        }
-
-        @media (min-width: 768px) and (max-width: 768px) {
-            #header .logo img {
-                max-width: 124px;
-            }
-
-            .container-logo {
-                margin-left: 1rem !important;
-            }
-        }
-
-        @media (min-width: 768px) {
-            .alert .whatsapp img {
-                max-width: 40px;
-            }
-
-            .alert .card-icons img {
-                max-width: 40px;
-            }
-
-            .alert .whatsapp .icons {
-                flex: 0 0 13.666667%;
-                max-width: 13.666667%;
-            }
-
-
-
-        }
-
-        /* FOOTER */
-
-        footer {
-            font-size: 12px;
-            padding: 30px 0;
-            margin: 0 auto;
-            background-color: #1f1f1f;
-            margin-top: 40px;
-        }
-
-        footer h3 {
-            border-bottom: none;
-            color: #fff;
-            font-size: 13px;
-        }
-
-        footer section {
-            display: flex;
-            flex-direction: column;
-        }
-
-        footer section div {
-            display: flex;
-            flex-direction: column;
-        }
-
-        footer a {
-            color: #777;
-            margin: 10px 0;
-
-        }
-
-        footer a:hover {
-            color: #4c9ed9;
-            text-decoration: none;
-        }
-
-        footer p {
-            color: #aaa;
-            padding-left: 0;
-            line-height: 1.5;
-        }
-
-        @media screen and (max-width: 990px) {
-            #player {
-                height: 380px;
-            }
-
-            .list-channels {
-                height: 350px;
-            }
-        }
-    </style>
-<SCRIPT LANGUAGE="JavaScript">
-<!-- Disable
-function disableselect(e){
-return false
-}
-
-function reEnable(){
-return true
-}
-
-//if IE4+
-document.onselectstart=new Function ("return false")
-document.oncontextmenu=new Function ("return false")
-//if NS6
-if (window.sidebar){
-document.onmousedown=disableselect
-document.onclick=reEnable
-}
-//-->
-</script>	
-<style>
-ul {
-  list-style-type: none;
-  margin: 10;
-  padding: 0;
-  overflow: hidden;
-  background-color: #222;
-}
-
-li {
-  float: left;
-  border-right:1px solid #222;
-}
-
-li:last-child {
-  border-right: none;
-}
-
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-} a:hover {	
-  text-decoration: none;
-} a:hover {
- color: #FFF;
-
-}	
-
-li a:hover:not(.active) {
-  background-color: #111;
-}
-
-.active {
-  background-color: #222;
-}
-</style>	
-</head>
-<body ondragstart="return false">
-<header id="header">
-<section class="container-fluid px-sm-5 px-3 d-flex align-items-center">
-<div class="col-sm-1 col-2 p-0 mr-sm-2 d-flex justify-content-center">
-<a href="#">
-<i class="fa fa-home fa-w-18"></i>
-</a>
-</div>
-<div class="col-sm-2 col-3 offset-lg-3 d-flex justify-content-center container-logo">
-<a class="logo">
-</a>
-</div>
-<div class="col-5 col-lg-3 offset-lg-3 offset-3 p-0 d-flex justify-content-end align-items-center">
-<div class="d-flex justify-content-between">
-<a class="logo-others mr-1 mr-lg-3">
-</a>
-<a class="logo-others mr-3">
-</a>
-</div>
-<a class="invisible" href="#">
-<i class="fa fa-share-alt fa-w-18"></i>
-</a>
-</div>
-</section>
-</header>
-<section id="player-container">
-<ul>
-<li><a class="active" href="radios-fm" alt><b>Rádios FM</b></a></li>  
-<li><a class="active" href="megatvrepo" alt><b>Mega TV Repo</b></a></li>
-<li><a class="active" href="mais-canais" alt><b>+ Canais</b></a></li>
-<li><a class="active" href="filmes" alt><b>Filmes</b></a></li>  
-</ul>	
-<div class="container-fluid mt-3 px-4">
-<div class="d-lg-flex full-container">
-<section id="player" class="col-lg-8 col-xs-12 p-0">
-<iframe src="/canais/globo-rj-ao-vivo.html" name="Player" "" frameborder="0" scrolling="no" allow="encrypted-media" allowfullscreen></iframe>
-
-</section>
-<div class="col-lg-4 col-xs-12 p-0">
-<section class="search-channel">
-<div class="input-group">
-<input type="text" class="form-control rounded-0 search-channel-input" placeholder="Buscar Canal">
-</div>
-</section>
-<section class="list-channels overflow-auto">
-<div class="channel">
-<a href="/canais/globo-rj-ao-vivo.html" target="Player">
-<div class="number"><b>01</b></div>
-<div class="logo">
-<img src="/logos/rede-globo.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Globo RJ</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/globo-sp-ao-vivo.html" target="Player">
-<div class="number"><b>02</b></div>
-<div class="logo">
-<img src="/logos/rede-globo.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Globo SP</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/globo-nordeste-ao-vivo.html" target="Player">
-<div class="number"><b>03</b></div>
-<div class="logo">
-<img src="/logos/rede-globo.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Globo Nordeste</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/sbt-ao-vivo.html" target="Player">
-<div class="number"><b>04</b></div>
-<div class="logo">
-<img src="/logos/sbt.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>SBT</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/band-ao-vivo.html" target="Player">
-<div class="number"><b>05</b></div>
-<div class="logo">
-<img src="/logos/band.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Band</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/record-tv-ao-vivo.html" target="Player">
-<div class="number"><b>06</b></div>
-<div class="logo">
-<img src="/logos/record-tv.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Record TV</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/rede-tv-ao-vivo.html" target="Player">
-<div class="number"><b>07</b></div>
-<div class="logo">
-<img src="/logos/rede-tv.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Rede TV!</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/cancao-nova-ao-vivo.html" target="Player">
-<div class="number"><b>08</b></div>
-<div class="logo">
-<img src="/logos/cancao-nova.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Can&ccedil;&atilde;o Nova</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/viva-ao-vivo.html" target="Player">
-<div class="number"><b>09</b></div>
-<div class="logo">
-<img src="/logos/viva.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Viva</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/multishow-ao-vivo.html" target="Player">
-<div class="number"><b>10</b></div>
-<div class="logo">
-<img src="/logos/multishow.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Multishow</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/gnt-ao-vivo.html" target="Player">
-<div class="number"><b>11</b></div>
-<div class="logo">
-<img src="/logos/gnt.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>GNT</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/mtv-ao-vivo.html" target="Player">
-<div class="number"><b>12</b></div>
-<div class="logo">
-<img src="/logos/mtv.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>MTV</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/mtv-live-ao-vivo.html" target="Player">
-<div class="number"><b>13</b></div>
-<div class="logo">
-<img src="/logos/mtv-live.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>MTV Live</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/bis-ao-vivo.html" target="Player">
-<div class="number"><b>14</b></div>
-<div class="logo">
-<img src="/logos/bis.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>BIS</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/e-entertainment-television-ao-vivo.html" target="Player">
-<div class="number"><b>15</b></div>
-<div class="logo">
-<img src="/logos/e-entertainment-television.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>E! Entertainment Television</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/lifetime-ao-vivo.html" target="Player">
-<div class="number"><b>16</b></div>
-<div class="logo">
-<img src="/logos/lifetime.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Lifetime</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/food-network-ao-vivo.html" target="Player">
-<div class="number"><b>17</b></div>
-<div class="logo">
-<img src="/logos/food-network.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Food Network</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/tlc-discovery-ao-vivo.html" target="Player">
-<div class="number"><b>18</b></div>
-<div class="logo">
-<img src="/logos/tlc-discovery.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>TLC Discovery</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/curta-ao-vivo.html" target="Player">
-<div class="number"><b>19</b></div>
-<div class="logo">
-<img src="/logos/curta.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Curta!</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/arte-1-ao-vivo.html" target="Player">
-<div class="number"><b>20</b></div>
-<div class="logo">
-<img src="/logos/arte-1.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Arte 1</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/canal-off-ao-vivo.html" target="Player">
-<div class="number"><b>21</b></div>
-<div class="logo">
-<img src="/logos/canal-off.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Canal Off</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/prime-box-brazil-ao-vivo.html" target="Player">
-<div class="number"><b>22</b></div>
-<div class="logo">
-<img src="/logos/prime-box-brazil.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Prime Box Brazil</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/travel-box-brazil-ao-vivo.html" target="Player">
-<div class="number"><b>23</b></div>
-<div class="logo">
-<img src="/logos/travel-box-brazil.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Travel Box Brazil</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/tru-tv-ao-vivo.html" target="Player">
-<div class="number"><b>24</b></div>
-<div class="logo">
-<img src="/logos/tru-tv.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Tru TV</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/woohoo-ao-vivo.html" target="Player">
-<div class="number"><b>25</b></div>
-<div class="logo">
-<img src="/logos/woohoo.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Woohoo</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/modo-viagem-ao-vivo.html" target="Player">
-<div class="number"><b>26</b></div>
-<div class="logo">
-<img src="/logos/modo-viagem.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Modo Viagem</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/comedy-central-ao-vivo.html" target="Player">
-<div class="number"><b>27</b></div>
-<div class="logo">
-<img src="/logos/comedy-central.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Comedy Central</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/star-channel-ao-vivo.html" target="Player">
-<div class="number"><b>28</b></div>
-<div class="logo">
-<img src="/logos/star-channel.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Star Channel</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/megapix-ao-vivo.html" target="Player">
-<div class="number"><b>29</b></div>
-<div class="logo">
-<img src="/logos/megapix.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Megapix</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/fx-ao-vivo.html" target="Player">
-<div class="number"><b>30</b></div>
-<div class="logo">
-<img src="/logos/fx.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>FX</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/hbo-ao-vivo.html" target="Player">
-<div class="number"><b>31</b></div>
-<div class="logo">
-<img src="/logos/hbo.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>HBO</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/hbo-2-ao-vivo.html" target="Player">
-<div class="number"><b>32</b></div>
-<div class="logo">
-<img src="/logos/hbo-2.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>HBO 2</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/hbo-plus-ao-vivo.html" target="Player">
-<div class="number"><b>33</b></div>
-<div class="logo">
-<img src="/logos/hbo-plus.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>HBO Plus</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/hbo-family-ao-vivo.html" target="Player">
-<div class="number"><b>34</b></div>
-<div class="logo">
-<img src="/logos/hbo-family.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>HBO Family</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/hbo-signature-ao-vivo.html" target="Player">
-<div class="number"><b>35</b></div>
-<div class="logo">
-<img src="/logos/hbo-signature.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>HBO Signature</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/hbo-xtreme-ao-vivo.html" target="Player">
-<div class="number"><b>36</b></div>
-<div class="logo">
-<img src="/logos/hbo-xtreme.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>HBO Xtreme</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/hbo-mundi-ao-vivo.html" target="Player">
-<div class="number"><b>37</b></div>
-<div class="logo">
-<img src="/logos/hbo-mundi.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>HBO Mundi</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/hbo-pop-ao-vivo.html" target="Player">
-<div class="number"><b>38</b></div>
-<div class="logo">
-<img src="/logos/hbo-pop.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>HBO POP</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/warner-tv-ao-vivo.html" target="Player">
-<div class="number"><b>39</b></div>
-<div class="logo">
-<img src="/logos/warner-tv.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Warner TV</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/universal-tv-ao-vivo.html" target="Player">
-<div class="number"><b>40</b></div>
-<div class="logo">
-<img src="/logos/universal-tv.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Universal TV</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/space-ao-vivo.html" target="Player">
-<div class="number"><b>41</b></div>
-<div class="logo">
-<img src="/logos/space.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Space</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/studio-universal-ao-vivo.html" target="Player">
-<div class="number"><b>42</b></div>
-<div class="logo">
-<img src="/logos/studio-universal.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>St&uacute;dio Universal</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/sony-channel-ao-vivo.html" target="Player">
-<div class="number"><b>43</b></div>
-<div class="logo">
-<img src="/logos/sony-channel.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Sony Channel</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/sony-movies-ao-vivo.html" target="Player">
-<div class="number"><b>44</b></div>
-<div class="logo">
-<img src="/logos/sony-movies.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Sony Movies</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/cinemax-ao-vivo.html" target="Player">
-<div class="number"><b>45</b></div>
-<div class="logo">
-<img src="/logos/cinemax.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Cinemax</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/tnt-ao-vivo.html" target="Player">
-<div class="number"><b>46</b></div>
-<div class="logo">
-<img src="/logos/tnt.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>TNT</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/tnt-series-ao-vivo.html" target="Player">
-<div class="number"><b>47</b></div>
-<div class="logo">
-<img src="/logos/tnt-series.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>TNT S&eacute;ries</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/tnt-novelas-ao-vivo.html" target="Player">
-<div class="number"><b>48</b></div>
-<div class="logo">
-<img src="/logos/tnt-novelas.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>TNT Novelas</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/cine-canal-ao-vivo.html" target="Player">
-<div class="number"><b>49</b></div>
-<div class="logo">
-<img src="/logos/cine-canal.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Cine Canal</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/paramount-network-ao-vivo.html" target="Player">
-<div class="number"><b>50</b></div>
-<div class="logo">
-<img src="/logos/paramount-network.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Paramount Network</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/canal-brasil-ao-vivo.html" target="Player">
-<div class="number"><b>51</b></div>
-<div class="logo">
-<img src="/logos/canal-brasil.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Canal Brasil</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/telecine-premium-ao-vivo.html" target="Player">
-<div class="number"><b>52</b></div>
-<div class="logo">
-<img src="/logos/telecine-premium.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Telecine Premium</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/telecine-pipoca-ao-vivo.html" target="Player">
-<div class="number"><b>53</b></div>
-<div class="logo">
-<img src="/logos/telecine-pipoca.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Telecine Pipoca</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/telecine-action-ao-vivo.html" target="Player">
-<div class="number"><b>54</b></div>
-<div class="logo">
-<img src="/logos/telecine-action.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Telecine Action</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/telecine-touch-ao-vivo.html" target="Player">
-<div class="number"><b>55</b></div>
-<div class="logo">
-<img src="/logos/telecine-touch.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Telecine Touch</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/telecine-fun-ao-vivo.html" target="Player">
-<div class="number"><b>56</b></div>
-<div class="logo">
-<img src="/logos/telecine-fun.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Telecine fun</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/telecine-cult-ao-vivo.html" target="Player">
-<div class="number"><b>57</b></div>
-<div class="logo">
-<img src="/logos/telecine-cult.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Telecine Cult</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/tcm-ao-vivo.html" target="Player">
-<div class="number"><b>58</b></div>
-<div class="logo">
-<img src="/logos/tcm.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>TCM</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/axn-ao-vivo.html" target="Player">
-<div class="number"><b>59</b></div>
-<div class="logo">
-<img src="/logos/axn.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>AXN</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/syfy-ao-vivo.html" target="Player">
-<div class="number"><b>60</b></div>
-<div class="logo">
-<img src="/logos/syfy.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Syfy</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/amc-ao-vivo.html" target="Player">
-<div class="number"><b>61</b></div>
-<div class="logo">
-<img src="/logos/amc.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>AMC</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/aie-ao-vivo.html" target="Player">
-<div class="number"><b>62</b></div>
-<div class="logo">
-<img src="/logos/aie.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>A&amp;E</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/usa-ao-vivo.html" target="Player">
-<div class="number"><b>63</b></div>
-<div class="logo">
-<img src="/logos/usa.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>USA</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/cartoon-network-ao-vivo.html" target="Player">
-<div class="number"><b>64</b></div>
-<div class="logo">
-<img src="/logos/cartoon-network.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Cartoon Network</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/gloob-ao-vivo.html" target="Player">
-<div class="number"><b>65</b></div>
-<div class="logo">
-<img src="/logos/gloob.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Gloob</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/gloobinho-ao-vivo.html" target="Player">
-<div class="number"><b>66</b></div>
-<div class="logo">
-<img src="/logos/gloobinho.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Gloobinho</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/cartoonito-ao-vivo.html" target="Player">
-<div class="number"><b>67</b></div>
-<div class="logo">
-<img src="/logos/cartoonito.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Cartoonito</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/tooncast-ao-vivo.html" target="Player">
-<div class="number"><b>68</b></div>
-<div class="logo">
-<img src="/logos/tooncast.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Tooncast</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/discovery-kids-ao-vivo.html" target="Player">
-<div class="number"><b>69</b></div>
-<div class="logo">
-<img src="/logos/discovery-kids.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Discovery Kids</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/disney-channel-ao-vivo.html" target="Player">
-<div class="number"><b>70</b></div>
-<div class="logo">
-<img src="/logos/disney-channel.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Disney Channel</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/nickelodeon-ao-vivo.html" target="Player">
-<div class="number"><b>71</b></div>
-<div class="logo">
-<img src="/logos/nickelodeon.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Nickelodeon</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/nick-jr-ao-vivo.html" target="Player">
-<div class="number"><b>72</b></div>
-<div class="logo">
-<img src="/logos/nick-jr.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Nick.Jr</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/discovery-channel-ao-vivo.html" target="Player">
-<div class="number"><b>73</b></div>
-<div class="logo">
-<img src="/logos/discovery-channel.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Discovery Channel</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/discovery-science-ao-vivo.html" target="Player">
-<div class="number"><b>74</b></div>
-<div class="logo">
-<img src="/logos/discovery-science.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Discovery Science</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/discovery-theater-ao-vivo.html" target="Player">
-<div class="number"><b>75</b></div>
-<div class="logo">
-<img src="/logos/discovery-theater.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Discovery Theater</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/discovery-world-ao-vivo.html" target="Player">
-<div class="number"><b>76</b></div>
-<div class="logo">
-<img src="/logos/discovery-world.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Discovery World</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/discovery-turbo-ao-vivo.html" target="Player">
-<div class="number"><b>77</b></div>
-<div class="logo">
-<img src="/logos/discovery-turbo.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Discovery Turbo</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/discovery-home-health-ao-vivo.html" target="Player">
-<div class="number"><b>78</b></div>
-<div class="logo">
-<img src="/logos/discovery-home-health.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Discovery Home &amp; Health</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/investigacao-discovery-ao-vivo.html" target="Player">
-<div class="number"><b>79</b></div>
-<div class="logo">
-<img src="/logos/investigacao-discovery.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Investiga&ccedil&atilde;o Discovery</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/hgtv-ao-vivo.html" target="Player">
-<div class="number"><b>80</b></div>
-<div class="logo">
-<img src="/logos/hgtv.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>HGTV</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/national-geographic-channel-ao-vivo.html" target="Player">
-<div class="number"><b>81</b></div>
-<div class="logo">
-<img src="/logos/national-geographic-channel.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>National Geographic Channel</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/animal-planet-ao-vivo.html" target="Player">
-<div class="number"><b>82</b></div>
-<div class="logo">
-<img src="/logos/animal-planet.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Animal Planet</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/history-channel-ao-vivo.html" target="Player">
-<div class="number"><b>83</b></div>
-<div class="logo">
-<img src="/logos/history-channel.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>History Channel</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/history-2-ao-vivo.html" target="Player">
-<div class="number"><b>84</b></div>
-<div class="logo">
-<img src="/logos/history-2.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>History 2</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/sportv-ao-vivo.html" target="Player">
-<div class="number"><b>85</b></div>
-<div class="logo">
-<img src="/logos/sportv.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>SporTV</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/sportv-2-ao-vivo.html" target="Player">
-<div class="number"><b>86</b></div>
-<div class="logo">
-<img src="/logos/sportv-2.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>SporTV 2</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/sportv-3-ao-vivo.html" target="Player">
-<div class="number"><b>87</b></div>
-<div class="logo">
-<img src="/logos/sportv-3.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>SporTV 3</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/espn-ao-vivo.html" target="Player">
-<div class="number"><b>88</b></div>
-<div class="logo">
-<img src="/logos/espn.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>ESPN</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/espn-2-ao-vivo.html" target="Player">
-<div class="number"><b>89</b></div>
-<div class="logo">
-<img src="/logos/espn-2.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>ESPN 2</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/espn-3-ao-vivo.html" target="Player">
-<div class="number"><b>90</b></div>
-<div class="logo">
-<img src="/logos/espn-3.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>ESPN 3</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/espn-4-ao-vivo.html" target="Player">
-<div class="number"><b>91</b></div>
-<div class="logo">
-<img src="/logos/espn-4.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>ESPN 4</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/espn-extra-ao-vivo.html" target="Player">
-<div class="number"><b>92</b></div>
-<div class="logo">
-<img src="/logos/espn-extra.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>ESPN Extra</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/band-sports-ao-vivo.html" target="Player">
-<div class="number"><b>93</b></div>
-<div class="logo">
-<img src="/logos/band-sports.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Band Sports</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/fox-sports-2-ao-vivo.html" target="Player">
-<div class="number"><b>94</b></div>
-<div class="logo">
-<img src="/logos/fox-sports-2.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>FOX Sports 2</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/combate-ao-vivo.html" target="Player">
-<div class="number"><b>95</b></div>
-<div class="logo">
-<img src="/logos/combate.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Combate</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/premiere-clubes-ao-vivo.html" target="Player">
-<div class="number"><b>96</b></div>
-<div class="logo">
-<img src="/logos/premiere-clubes.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Premiere Clubes</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/globo-news-ao-vivo.html" target="Player">
-<div class="number"><b>97</b></div>
-<div class="logo">
-<img src="/logos/globo-news.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Globo News</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/band-news-ao-vivo.html" target="Player">
-<div class="number"><b>98</b></div>
-<div class="logo">
-<img src="/logos/band-news.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Band News</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/record-news-ao-vivo.html" target="Player">
-<div class="number"><b>99</b></div>
-<div class="logo">
-<img src="/logos/record-news.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Record News</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/cnn-brasil-ao-vivo.html" target="Player">
-<div class="number"><b>100</b></div>
-<div class="logo">
-<img src="/logos/cnn-brasil.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>CNN Brasil</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/sexy-hot-ao-vivo.html" target="Player">
-<div class="number"><b>101</b></div>
-<div class="logo">
-<img src="/logos/sexy-hot.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Sexy Hot</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais/sex-prive-ao-vivo.html" target="Player">
-<div class="number"><b>102</b></div>
-<div class="logo">
-<img src="/logos/sex-prive.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Sex Priv&eacute;</b></span>
-</div>
-</a>
-</div>
-</section>
-</div>
-</div>
-</div>
-</section>
-<footer>
-<div class="container d-flex justify-content-center">
-<div class="col-xs-12 col-sm-12 col-md-10 mt-3 d-flex justify-content-center">
-<p><b>© 2023 Mega TV Online: Canais de TV Full HD Online! E o melhor, é de Graça!. Todos os Direitos do
-Código do Site Reservados!</b>
-</p>
-</div>
-</div>
-</footer>
-<script>
-        //Loop through elements .channel to add a counter to each .number element
-        //The counter needs to be 3 digits long, so we add a 0 to the left if the number is less than 10
-        // var channel = document.querySelectorAll('.channel');
-        // for (var i = 0; i < channel.length; i++) {
-        //     var number = channel[i].querySelector('.number');
-        //     var numberValue = i + 1;
-        //     if (numberValue < 10) {
-        //         number.innerHTML = '00' + numberValue;
-        //     } else if (numberValue < 100) {
-        //         number.innerHTML = '0' + numberValue;
-        //     }
-        // }
-
-        //Filter .channels and .number by search-channel input
-        var searchChannel = document.querySelector('.search-channel-input');
-        searchChannel.addEventListener('input', function () {
-            var filter = searchChannel.value.toUpperCase();
-            var channel = document.querySelectorAll('.channel');
-            var number = document.querySelectorAll('.number');
-            for (var i = 0; i < channel.length; i++) {
-                var channelName = channel[i].querySelector('.channel .name span:nth-child(2)');
-                var channelNameValue = channelName.innerHTML.toUpperCase();
-                //check if contains number inside number variable
-                var numberExists = number[i].innerHTML.indexOf(filter) > -1;
-
-                if (channelNameValue.indexOf(filter) > -1 || numberExists) {
-                    channel[i].style.display = '';
-                } else {
-                    channel[i].style.display = 'none';
+<!DOCTYPE html>
+<html lang="pt-br" class="bg-stone-800 text-white">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futtemax  - Assistir Tv Online ao vivo, futebol e BBB grátis</title>
+    <meta name="description" content="Seja bem vindos ao Canais Play, o melhor site para você assistir canais de tv online 24 horas por dia, veja a programação do seu canal favorito e divirta-se assistindo a partidas de futebol pela internet!">
+    <meta property="og:title" content="Canais Play  - Assistir Tv Online ao vivo, futebol e BBB grátis" />
+    <meta property="og:description" content="Seja bem vindos ao Canais Play, o melhor site para você assistir canais de tv online 24 horas por dia, veja a programação do seu canal favorito e divirta-se assistindo a partidas de futebol pela internet!" />
+    <meta property="og:site_name" content="www.futtemax.net" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:description" content="Seja bem vindos ao Canais Play, o melhor site para você assistir canais de tv online 24 horas por dia, veja a programação do seu canal favorito e divirta-se assistindo a partidas de futebol pela internet!" />
+    <meta name="twitter:title" content="Canais Play  - Assistir Tv Online ao vivo, futebol e BBB grátis" />
+    <meta property="og:url" content="https://www.futtemax.net/" />
+    <link rel="canonical" href="https://www.futtemax.net/" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://www.futtemax.net">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="alternate" type="application/rss+xml" title="Canais Play Feed" href="https://www.futtemax.net/sitemaps/feed.xml" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://www.futtemax.net/css/style.css?v=4" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="shortcut icon" href="https://www.futtemax.net/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="https://www.futtemax.net/images/favicon.ico" type="image/x-icon">
+    <link rel="manifest" href="https://www.futtemax.net/site.webmanifest">
+    <script src="https://cdn.tailwindcss.com/3.2.4"></script>
+    <meta name="a.validate.02" content="37CW9uqX-FzaDgPN9ALA3_jrSmP5PzMVe5Cr" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6874147654506393"crossorigin="anonymous"></script>
+	<script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    screens: {
+                        'xl': '1200px',
+                        'lg': '1024px',
+                        'md': '720px',
+                        'sm': '480px',
+                        'c360': '360px',
+                        'c460': '460px',
+                        'c660': '660px',
+                        'c680': '680px',
+                        'c700': '700px',
+                        'c800': '800px',
+                        'c900': '900px',
+                        'c1100': '1100px',
+                        'c1200': '1200px',
+                    }
                 }
             }
-        });
-
-        if(window.location.href.indexOf(".html") > -1){
-             //Scroll just a.active inside .list-channel to the top of the .list-channel and not scroll the window
-            var listChannel = document.querySelector('.list-channels');
-            var active = document.querySelector('.channel a.active');
-            listChannel.scrollTop = active.offsetTop - listChannel.offsetTop;
         }
-
-        //when click on .options remove .active and add .active to the clicked element
-        var options = document.querySelectorAll('.options');
-            for (var i = 0; i < options.length; i++) {
-                options[i].addEventListener('click', function () {
-                    var active = document.querySelector('.options.active');
-                    active.classList.remove('active');
-                    this.classList.add('active');
-                });
-            }
-
-       
-
     </script>
-</body>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script defer src="https://www.futtemax.net/js/jquery.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script defer src="https://www.futtemax.net/js/scripts.js?v=4"></script>
+    <script type="text/javascript">if ( window.self !== window.top ) {window.top.location.href=window.location.href;}</script>
+  </head>
+  <body itemscope itemtype="http://schema.org/WebPage" class="min-h-screen">
+    <header id="header" class="top-0 fixed border-b-2 border-yellow-500 bg-stone-900/[0.8] w-full left-0 right-0 z-20 backdrop-blur">
+      <section class="max-w-screen-xl mx-auto py-4 flex justify-between items-center px-4">
+        <div id="button-menu" class="w-8 h-8 flex justify-center items-center text-xl cursor-pointer group cursor-pointer">
+          <img src="https://www.futtemax.net/icons/bars.svg" class="invert w-5 h-5 group-hover:w-6 group-hover:h-6" alt="Menu" />
+        </div>
+        <div><a href="https://www.futtemax.net/" target="_self"><img src="https://www.futtemax.net/images/logo-black.png" title="Assistir futebol ao vivo é no Canais Play" alt="Assistir futebol ao vivo é no Canais Play" width="171" height="32" class="h-8"></a></div>
+        <a href="/search/" target="_self" id="button-search" class="w-8 h-8 flex justify-center items-center text-xl group cursor-pointer">
+        <img src="https://www.futtemax.net/icons/magnifying-glass.svg" class="invert w-5 h-5 group-hover:w-6 group-hover:h-6" alt="Busca" />
+        </a>
+      </section>
+    </header>
+    <nav id="menu" class="hidden fixed top-0 bottom-0 left-0 w-[300px] bg-stone-800 z-30">
+      <ul class="w-full overflow-y-auto absolute top-0 bottom-0 left-0">
+        <li class="p-4 border-b border-stone-700"><a href="https://www.futtemax.net/" target="_self"><img src="https://www.futtemax.net/images/logo-black.png" title="Assistir tv ao vivo é no Canais Play" alt="Assistir tv ao vivo é no Canais Play" width="171" height="32" class="h-8"></a></li>
+        <li class="border-b border-stone-700 hover:bg-black/[0.1]"><a href="https://www.futtemax.net/" target="_self" class="px-4 py-3 block">Página inicial</a></li>
+        <li class="border-b border-stone-700 hover:bg-black/[0.1]"><a href="https://t.me/futebolgratuitooficial" target="_self" class="px-4 py-3 block">Nosso Grupo</a></li>
+        <li class="border-b border-stone-700 hover:bg-black/[0.1]"><a href="https://www.futtemax.net/categoria/abertos/" target="_self" class="px-4 py-3 block">Abertos</a></li>
+        <li class="border-b border-stone-700 hover:bg-black/[0.1]"><a href="https://www.futtemax.net/categoria/documentarios/" target="_self" class="px-4 py-3 block">Documentários</a></li>
+        <li class="border-b border-stone-700 hover:bg-black/[0.1]"><a href="https://www.futtemax.net/categoria/esportes/" target="_self" class="px-4 py-3 block">Esportes</a></li>
+		<li class="border-b border-stone-700 hover:bg-black/[0.1]"><a href="https://www.futtemax.net/categoria/filmes/" target="_self" class="px-4 py-3 block">Filmes</a></li>
+        <li class="border-b border-stone-700 hover:bg-black/[0.1]"><a href="https://www.futtemax.net/categoria/infantil/" target="_self" class="px-4 py-3 block">Infantil</a></li>
+        <li class="border-b border-stone-700 hover:bg-black/[0.1]"><a href="https://www.futtemax.net/categoria/musicas/" target="_self" class="px-4 py-3 block">Músicas</a></li>
+        <li class="border-b border-stone-700 hover:bg-black/[0.1]"><a href="https://www.futtemax.net/categoria/noticias/" target="_self" class="px-4 py-3 block">Notícias</a></li>
+		<li class="border-b border-stone-700 hover:bg-black/[0.1]"><a href="https://www.futtemax.net/categoria/variados/" target="_self" class="px-4 py-3 block">Variados</a></li>
+      </ul>
+      <div id="close-menu" class="absolute top-2 -right-10">
+        <img src="https://www.futtemax.net/icons/x.svg" class="cursor-pointer w-6 h-6 mx-3 invert" alt="Fechar" />
+      </div>
+    </nav>
+	<h3 style="text-align: center;"><a href="https://t.me/futebolgratuitooficial"><strong>Inscreva-se no canal do <span style="color: #00a6ed;">Telegram</span> e nunca perca nosso Site!</strong></a></h3>
+    <p style="text-align: center;">
+    <section id="bg-black" class="hidden bg-black/[0.9] fixed top-0 bottom-0 left-0 right-0 z-20"></section>
+    <section class="max-w-screen-xl mx-auto py-4 px-4">
+      <div class="uppercase text-sm text-yellow-300 font-bold pb-4 flex justify-between items-center sm:hidden">
+        <span>Canais</span>
+        <div class="flex">
+          <div class="prevBtn">
+            <img src="https://www.futtemax.net/icons/angle-left.svg" class="invert w-4 h-4 cursor-pointer mx-2" alt="Anterior" />
+          </div>
+          <div class="nextBtn"><img src="https://www.futtemax.net/icons/angle-right.svg" class="invert w-4 h-4 cursor-pointer mx-2" alt="Próximo" /></div>
+        </div>
+      </div>
+      <div class="block relative overflow-hidden w-full h-0
+        pt-[calc((((120/(106+(5/2)))/2)*100%)+10px)]
+        c360:pt-[calc((((120/(106+((5*2)/3)))/3)*100%)+10px)]
+        c460:pt-[calc((((120/(106+((5*3))))/4)*100%)+10px)]
+        c660:pt-[calc((((120/(106+((5*4)/5)))/5)*100%)+10px)]
+        c700:pt-[calc((((120/(106+((5*5)/6)))/6)*100%)+10px)]
+        c800:pt-[calc((((120/(106+((5*6)/7)))/7)*100%)+10px)]
+        c900:pt-[calc((((120/(106+((5*7)/8)))/8)*100%)+10px)]
+        c1100:pt-[calc((((120/(106+((5*8)/9)))/9)*100%)+10px)]
+        c1200:pt-[calc((((120/(106+((5*9)/10)))/10)*100%)+10px)]
+        ">
+        <div class="flex items-center gap-4 w-full h-full absolute inset-0">
+          <div class="prevBtn hidden sm:block">
+            <img src="https://www.futtemax.net/icons/angle-left.svg" class="invert w-6 h-6 cursor-pointer -mt-[3px]" alt="Anterior" />
+          </div>
+          <div class="overflow-hidden w-full">
+            <div class="owl-carousel owl-car-grid w-full">
+              <div class="item w-full">
+                <!-- Lista o Inicio -->
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-fazenda-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/fazenda.jpg" alt="Assistir BAND ao vivo 24 horas grátis" title="Assistir BAND ao vivo 24 horas grátis" width="106" height="60" />
+                </a>
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-viva-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/viva.jpg" alt="Assistir VIVA ao vivo grátis 24 horas online" title="Assistir VIVA ao vivo grátis 24 horas online" width="106" height="60" />
+                </a>
+              </div>
+              <div class="item w-full">
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-globo-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/globo.jpg" alt="Assistir GLOBO ao vivo sem travar 24 horas HD" title="Assistir GLOBO ao vivo sem travar 24 horas HD" width="106" height="60" />
+                </a>
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-sbt-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/sbt.jpg" alt="Assistir SBT ao vivo no celular online grátis" title="Assistir SBT ao vivo no celular online grátis" width="106" height="60" />
+                </a>
+              </div>
+              <div class="item w-full">
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-record-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/record.jpg" alt="Assistir RECORD ao vivo tv online" title="Assistir RECORD ao vivo tv online" width="106" height="60" />
+                </a>
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-cnn-brasil-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/cnnbrasil.jpg" alt="Assistir CNN BRASIL ao vivo tv ao vivo" title="Assistir CNN BRASIL ao vivo tv ao vivo" width="106" height="60" />
+                </a>
+              </div>
+              <div class="item w-full">
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-globo-news-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/globonews.jpg" alt="Assistir GLOBO NEWS ao vivo 24 horas HD online" title="Assistir GLOBO NEWS ao vivo 24 horas HD online" width="106" height="60" />
+                </a>
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-multishow-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/multishow.jpg" alt="Assistir MULTISHOW ao vivo 24 horas grátis" title="Assistir MULTISHOW ao vivo 24 horas grátis" width="106" height="60" />
+                </a>
+              </div>
+              <div class="item w-full">
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-sexyhot-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/sexyhot.jpg" alt="Assistir SEXYHOT ao vivo grátis 24 horas online" title="Assistir SEXYHOT ao vivo grátis 24 horas online" width="106" height="60" />
+                </a>
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-mtv-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/mtv.jpg" alt="Assistir MTV ao vivo sem travar 24 horas HD" title="Assistir MTV ao vivo sem travar 24 horas HD" width="106" height="60" />
+                </a>
+              </div>
+              <div class="item w-full">
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-modo-viagem-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/modoviagem.jpg" alt="Assistir MODO VIAGEM ao vivo no celular online grátis" title="Assistir MODO VIAGEM ao vivo no celular online grátis" width="106" height="60" />
+                </a>
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-bis-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/bis.jpg" alt="Assistir BIS ao vivo tv online" title="Assistir BIS ao vivo tv online" width="106" height="60" />
+                </a>
+              </div>
+              <div class="item w-full">
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-discovery-channel-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/d.channel.jpg" alt="Assistir DISCOVERY CHANNEL ao vivo tv ao vivo" title="Assistir DISCOVERY CHANNEL ao vivo tv ao vivo" width="106" height="60" />
+                </a>
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-discovery-home-&-health-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/d.home.jpg" alt="Assistir DISCOVERY HOME & HEALTH ao vivo 24 horas HD online" title="Assistir DISCOVERY HOME & HEALTH ao vivo 24 horas HD online" width="106" height="60" />
+                </a>
+              </div>
+              <div class="item w-full">
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-discovery-investigacao-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/d.investigacao.jpg" alt="Assistir DISCOVERY INVESTIGAÇÃO ao vivo 24 horas grátis" title="Assistir DISCOVERY INVESTIGAÇÃO ao vivo 24 horas grátis" width="106" height="60" />
+                </a>
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-discovery-science-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/d.science.jpg" alt="Assistir DISCOVERY SCIENCE ao vivo grátis 24 horas online" title="Assistir DISCOVERY SCIENCE ao vivo grátis 24 horas online" width="106" height="60" />
+                </a>
+              </div>
+              <div class="item w-full">
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-discovery-theater-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/d.theater.jpg" alt="Assistir DISCOVERY THEATER ao vivo sem travar 24 horas HD" title="Assistir DISCOVERY THEATER ao vivo sem travar 24 horas HD" width="106" height="60" />
+                </a>
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-discovery-turbo-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/d.turbo.jpg" alt="Assistir DISCOVERY TURBO ao vivo no celular online grátis" title="Assistir DISCOVERY TURBO ao vivo no celular online grátis" width="106" height="60" />
+                </a>
+              </div>
+              <div class="item w-full">
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-discovery-world-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/d.world.jpg" alt="Assistir DISCOVERY WORLD ao vivo tv online" title="Assistir DISCOVERY WORLD ao vivo tv online" width="106" height="60" />
+                </a>
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-a&e-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/a&e.jpg" alt="Assistir A&E ao vivo tv ao vivo" title="Assistir A&E ao vivo tv ao vivo" width="106" height="60" />
+                </a>
+              </div>
+              <div class="item w-full">
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-espn-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/espn.jpg" alt="Assistir ESPN ao vivo 24 horas HD online" title="Assistir ESPN ao vivo 24 horas HD online" width="106" height="60" />
+                </a>
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-espn-2-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/espn2.jpg" alt="Assistir ESPN 2 ao vivo 24 horas grátis" title="Assistir ESPN 2 ao vivo 24 horas grátis" width="106" height="60" />
+                </a>
+              </div>
+              <div class="item w-full">
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-espn-3-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/espn3.jpg" alt="Assistir ESPN 3 ao vivo grátis 24 horas online" title="Assistir ESPN 3 ao vivo grátis 24 horas online" width="106" height="60" />
+                </a>
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-espn-4-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/espn4.jpg" alt="Assistir ESPN 4 ao vivo sem travar 24 horas HD" title="Assistir ESPN 4 ao vivo sem travar 24 horas HD" width="106" height="60" />
+                </a>
+              </div>
+              <div class="item w-full">
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-sportv-1-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/sportv1.jpg" alt="Assistir SPORTV ao vivo no celular online grátis" title="Assistir SPORTV ao vivo no celular online grátis" width="106" height="60" />
+                </a>
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-sportv-2-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/sportv2.jpg" alt="Assistir SPORTV 2 ao vivo tv online" title="Assistir SPORTV 2 ao vivo tv online" width="106" height="60" />
+                </a>
+              </div>
+              <div class="item w-full">
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-sportv-3-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/sportv3.jpg" alt="Assistir SPORTV 3 ao vivo tv ao vivo" title="Assistir SPORTV 3 ao vivo tv ao vivo" width="106" height="60" />
+                </a>
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-premiere-1-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/premiere1.jpg" alt="Assistir PREMIERE CLUBES ao vivo 24 horas HD online" title="Assistir PREMIERE CLUBES ao vivo 24 horas HD online" width="106" height="60" />
+                </a>
+              </div>
+              <div class="item w-full">
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-premiere-2-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/premiere2.jpg" alt="Assistir PREMIERE 2 ao vivo 24 horas grátis" title="Assistir PREMIERE 2 ao vivo 24 horas grátis" width="106" height="60" />
+                </a>
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-premiere-3-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/premiere3.jpg" alt="Assistir PREMIERE 3 ao vivo grátis 24 horas online" title="Assistir PREMIERE 3 ao vivo grátis 24 horas online" width="106" height="60" />
+                </a>
+              </div>
+              <div class="item w-full">
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-premiere-4-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/premiere4.jpg" alt="Assistir PREMIERE 4 ao vivo sem travar 24 horas HD" title="Assistir PREMIERE 4 ao vivo sem travar 24 horas HD" width="106" height="60" />
+                </a>
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-premiere-5-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/premiere5.jpg" alt="Assistir PREMIERE 5 ao vivo no celular online grátis" title="Assistir PREMIERE 5 ao vivo no celular online grátis" width="106" height="60" />
+                </a>
+              </div>
+              <div class="item w-full">
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-premiere-6-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/premiere6.jpg" alt="Assistir PREMIERE 6 ao vivo tv online" title="Assistir PREMIERE 6 ao vivo tv online" width="106" height="60" />
+                </a>
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-premiere-7-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/premiere7.jpg" alt="Assistir PREMIERE 7 ao vivo tv ao vivo" title="Assistir PREMIERE 7 ao vivo tv ao vivo" width="106" height="60" />
+                </a>
+              </div>
+              <div class="item w-full">
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-ufc-fight-pass-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/ufc.jpg" alt="Assistir UFC FIGHT PASS ao vivo 24 horas HD online" title="Assistir UFC FIGHT PASS ao vivo 24 horas HD online" width="106" height="60" />
+                </a>
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-combate-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/combate.jpg" alt="Assistir COMBATE ao vivo 24 horas grátis" title="Assistir COMBATE ao vivo 24 horas grátis" width="106" height="60" />
+                </a>
+              </div>
+              <div class="item w-full">
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-band-sports-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/bandsports.jpg" alt="Assistir BANDSPORTS  ao vivo grátis 24 horas online" title="Assistir BANDSPORTS  ao vivo grátis 24 horas online" width="106" height="60" />
+                </a>
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-hbo-max-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/hbomax.jpg" alt="Assistir HBO MAX ao vivo sem travar 24 horas HD" title="Assistir HBO MAX ao vivo sem travar 24 horas HD" width="106" height="60" />
+                </a>
+              </div>
+              <div class="item w-full">
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-star+-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/star+.jpg" alt="Assistir STAR+ ao vivo no celular online grátis" title="Assistir STAR+ ao vivo no celular online grátis" width="106" height="60" />
+                </a>
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-esporte-1-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/esporte1.jpg" alt="Assistir SPORT TV ao vivo tv online" title="Assistir SPORT TV ao vivo tv online" width="106" height="60" />
+                </a>
+              </div>
+              <div class="item w-full">
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-hbo-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/hbo.jpg" alt="Assistir HBO ao vivo tv ao vivo" title="Assistir HBO ao vivo tv ao vivo" width="106" height="60" />
+                </a>
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-hbo-2-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/hbo2.jpg" alt="Assistir HBO 2 ao vivo 24 horas HD online" title="Assistir HBO 2 ao vivo 24 horas HD online" width="106" height="60" />
+                </a>
+              </div>
+              <div class="item w-full">
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-hbo-family-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/hbofamily.jpg" alt="Assistir HBO FAMILY ao vivo 24 horas grátis" title="Assistir HBO FAMILY ao vivo 24 horas grátis" width="106" height="60" />
+                </a>
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-hbo-mundi-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/hbomundi.jpg" alt="Assistir HBO MUNDI ao vivo grátis 24 horas online" title="Assistir HBO MUNDI ao vivo grátis 24 horas online" width="106" height="60" />
+                </a>
+              </div>
+              <div class="item w-full">
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-hbo-plus-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/hboplus.jpg" alt="Assistir HBO PLUS ao vivo sem travar 24 horas HD" title="Assistir HBO PLUS ao vivo sem travar 24 horas HD" width="106" height="60" />
+                </a>
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-hbo-pop-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/hbopop.jpg" alt="Assistir HBO POP ao vivo no celular online grátis" title="Assistir HBO POP ao vivo no celular online grátis" width="106" height="60" />
+                </a>
+              </div>
+              <div class="item w-full">
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-hbo-signature-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/hbosignature.jpg" alt="Assistir HBO SIGNATURE ao vivo tv online" title="Assistir HBO SIGNATURE ao vivo tv online" width="106" height="60" />
+                </a>
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-hbo-xtreme-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/hboxtreme.jpg" alt="Assistir HBO XTREME ao vivo tv ao vivo" title="Assistir HBO XTREME ao vivo tv ao vivo" width="106" height="60" />
+                </a>
+              </div>
+              <div class="item w-full">
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-telecine-action-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/telecineaction.jpg" alt="Assistir TELECINE ACTION ao vivo 24 horas HD online" title="Assistir TELECINE ACTION ao vivo 24 horas HD online" width="106" height="60" />
+                </a>
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-telecine-cult-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/telecinecult.jpg" alt="Assistir TELECINE CULT ao vivo 24 horas grátis" title="Assistir TELECINE CULT ao vivo 24 horas grátis" width="106" height="60" />
+                </a>
+              </div>
+              <div class="item w-full">
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-telecine-fun-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/telecinefun.jpg" alt="Assistir TELECINE FUN ao vivo grátis 24 horas online" title="Assistir TELECINE FUN ao vivo grátis 24 horas online" width="106" height="60" />
+                </a>
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-telecine-pipoca-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/telecinepipoca.jpg" alt="Assistir TELECINE PIPOCA ao vivo sem travar 24 horas HD" title="Assistir TELECINE PIPOCA ao vivo sem travar 24 horas HD" width="106" height="60" />
+                </a>
+              </div>
+              <div class="item w-full">
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-telecine-premium-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/telecinepremium.jpg" alt="Assistir TELECINE PREMIUM ao vivo no celular online grátis" title="Assistir TELECINE PREMIUM ao vivo no celular online grátis" width="106" height="60" />
+                </a>
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-telecine-touch-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/telecinetouch.jpg" alt="Assistir TELECINE TOUCH ao vivo tv online" title="Assistir TELECINE TOUCH ao vivo tv online" width="106" height="60" />
+                </a>
+              </div>
+              <div class="item w-full">
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-tnt-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/tnt.jpg" alt="Assistir TNT ao vivo tv ao vivo" title="Assistir TNT ao vivo tv ao vivo" width="106" height="60" />
+                </a>
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-tnt-series-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/tntseries.jpg" alt="Assistir TNT SERIES ao vivo 24 horas HD online" title="Assistir TNT SERIES ao vivo 24 horas HD online" width="106" height="60" />
+                </a>
+              </div>
+              <div class="item w-full">
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-space-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/space.jpg" alt="Assistir SPACE ao vivo 24 horas grátis" title="Assistir SPACE ao vivo 24 horas grátis" width="106" height="60" />
+                </a>
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-megapix-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/megapix.jpg" alt="Assistir MEGAPIX ao vivo grátis 24 horas online" title="Assistir MEGAPIX ao vivo grátis 24 horas online" width="106" height="60" />
+                </a>
+              </div>
+              <div class="item w-full">
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-star-channel-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/starchannel.jpg" alt="Assistir STAR CHANNEL ao vivo sem travar 24 horas HD" title="Assistir STAR CHANNEL ao vivo sem travar 24 horas HD" width="106" height="60" />
+                </a>
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-fx-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/fx.jpg" alt="Assistir FX ao vivo no celular online grátis" title="Assistir FX ao vivo no celular online grátis" width="106" height="60" />
+                </a>
+              </div>
+              <div class="item w-full">
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-sony-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/sony.jpg" alt="Assistir SONY ao vivo tv online" title="Assistir SONY ao vivo tv online" width="106" height="60" />
+                </a>
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-canal-brasil-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/canalbrasil.jpg" alt="Assistir CANAL BRASIL ao vivo tv ao vivo" title="Assistir CANAL BRASIL ao vivo tv ao vivo" width="106" height="60" />
+                </a>
+              </div>
+              <div class="item w-full">
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-amc-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/amc.jpg" alt="Assistir AMC ao vivo 24 horas HD online" title="Assistir AMC ao vivo 24 horas HD online" width="106" height="60" />
+                </a>
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-paramount-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/paramount.jpg" alt="Assistir PARAMOUNT ao vivo 24 horas grátis" title="Assistir PARAMOUNT ao vivo 24 horas grátis" width="106" height="60" />
+                </a>
+              </div>
+              <div class="item w-full">
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-studio-universal-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/studio.jpg" alt="Assistir STUDIO UNIVERSAL ao vivo grátis 24 horas online" title="Assistir STUDIO UNIVERSAL ao vivo grátis 24 horas online" width="106" height="60" />
+                </a>
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-cinemax-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/cinemax.jpg" alt="Assistir  CINEMAX ao vivo sem travar 24 horas HD" title="Assistir CINEMAX ao vivo sem travar 24 horas HD" width="106" height="60" />
+                </a>
+              </div>
+              <div class="item w-full">
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-syfy-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/syfy.jpg" alt="Assistir SYFY ao vivo no celular online grátis" title="Assistir SYFY ao vivo no celular online grátis" width="106" height="60" />
+                </a>
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-tcm-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/tcm.jpg" alt="Assistir TCM ao vivo tv online" title="Assistir TCM ao vivo tv online" width="106" height="60" />
+                </a>
+              </div>
+              <div class="item w-full">
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-axn-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/axn.jpg" alt="Assistir AXN ao vivo tv ao vivo" title="Assistir AXN ao vivo tv ao vivo" width="106" height="60" />
+                </a>
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-universal-channel-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/universal.jpg" alt="Assistir UNIVERSAL CHANNEL ao vivo 24 horas HD online" title="Assistir UNIVERSAL CHANNEL ao vivo 24 horas HD online" width="106" height="60" />
+                </a>
+              </div>
+              <div class="item w-full">
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-warner-bros-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/warner.jpg" alt="Assistir WARNER BROS ao vivo 24 horas grátis" title="Assistir WARNER BROS ao vivo 24 horas grátis" width="106" height="60" />
+                </a>
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-cine-canal-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/cinecanal.jpg" alt="Assistir CINECANAL ao vivo grátis 24 horas online" title="Assistir CINECANAL ao vivo grátis 24 horas online" width="106" height="60" />
+                </a>
+              </div>
+              <div class="item w-full">
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-arte1-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/arte1.jpg" alt="Assistir ARTE1 ao vivo sem travar 24 horas HD" title="Assistir ARTE1 ao vivo sem travar 24 horas HD" width="106" height="60" />
+                </a>
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-e-entertainment-television-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/e!.jpg" alt="Assistir E! ENTERTAINMENT TELEVISION ao vivo no celular online grátis" title="Assistir E! ENTERTAINMENT TELEVISION ao vivo no celular online grátis" width="106" height="60" />
+                </a>
+              </div>
+              <div class="item w-full">
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-gloob-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/gloob.jpg" alt="Assistir GLOOB ao vivo tv online" title="Assistir GLOOB ao vivo tv online" width="106" height="60" />
+                </a>
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-gloobinho-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/gloobinho.jpg" alt="Assistir GLOOBINHO ao vivo tv ao vivo" title="Assistir GLOOBINHO ao vivo tv ao vivo" width="106" height="60" />
+                </a>
+              </div>
+              <div class="item w-full">
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-cartoon-network-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/cartoon.jpg" alt="Assistir Canal CARTOON NETWORK ao vivo 24 horas HD online" title="Assistir Canal CARTOON NETWORK ao vivo 24 horas HD online" width="106" height="60" />
+                </a>
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-disney-channel-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/disneychannel.jpg" alt="Assistir DISNEY CHANNEL ao vivo 24 horas grátis" title="Assistir DISNEY CHANNEL ao vivo 24 horas grátis" width="106" height="60" />
+                </a>
+              </div>
+              <div class="item w-full">
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-discovery-kids-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/d.kids.jpg" alt="Assistir DISCOVERY KIDS ao vivo grátis 24 horas online" title="Assistir DISCOVERY KIDS ao vivo grátis 24 horas online" width="106" height="60" />
+                </a>
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-tv-ra-tim-bum-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/tvratimbum.jpg" alt="Assistir TV RA TIM BUM ao vivo sem travar 24 horas HD" title="Assistir TV RA TIM BUM ao vivo sem travar 24 horas HD" width="106" height="60" />
+                </a>
+              </div>
+              <div class="item w-full">
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-tooncast-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/tooncast.jpg" alt="Assistir TOONCAST ao vivo no celular online grátis" title="Assistir TOONCAST ao vivo no celular online grátis" width="106" height="60" />
+                </a>
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-nickelodeon-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/nickelodeon.jpg" alt="Assistir NICKLODEON ao vivo tv online" title="Assistir NICKLODEON ao vivo tv online" width="106" height="60" />
+                </a>
+              </div>
+              <div class="item w-full">
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-nick-jr-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/nickjr.jpg" alt="Assistir NICK JR. ao vivo tv ao vivo" title="Assistir NICK JR. ao vivo tv ao vivo" width="106" height="60" />
+                </a>
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-cartoonito-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/cartoonito.jpg" alt="Assistir CARTOONITO ao vivo 24 horas HD online" title="Assistir CARTOONITO ao vivo 24 horas HD online" width="106" height="60" />
+                </a>
+              </div>
+              <div class="item w-full">
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-redetv-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/redetv.jpg" alt="Assistir REDETV ao vivo 24 horas grátis" title="Assistir REDETV ao vivo 24 horas grátis" width="106" height="60" />
+                </a>
+                <a target="_self" class="relative opacity-90 hover:opacity-100 bg-[#0a0a0a] overflow-hidden block rounded-lg mb-[5px] w-full pt-[calc(60/106*100%)] h-0" href="https://www.futtemax.net/assistir-fishtv-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">
+                <img class="owl-lazy w-full h-full absolute object-cover block inset-0" data-src="https://www.futtemax.net/wp-content/uploads/fishtv.jpg" alt="Assistir FISHTV ao vivo grátis 24 horas online" title="Assistir FISHTV ao vivo grátis 24 horas online" width="106" height="60" />
+                </a>
+                <!-- Lista o Fim -->
+              </div>
+            </div>
+          </div>
+          <div class="nextBtn hidden sm:block">
+            <img src="https://www.futtemax.net/icons/angle-right.svg" class="invert w-6 h-6 cursor-pointer -mt-[3px]" alt="Próximo" />
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="max-w-screen-xl mx-auto px-4">
+      <section class="uppercase flex items-center justify-center gap-2 flex-wrap">
+        <h2 class="button-option text-stone-400 px-4 py-2 block text-sm\\\\\ uppercase">Assistir canais de tv online, jogos de futebol em HD, BBB 2023 ao vivo com todas as câmeras e muito mais!</h2>
+      </section>
+      <div class="uppercase text-sm text-yellow-500 font-bold py-4 flex justify-between items-center">
+        <h1>TV ONLINE - BBB 23 AO VIVO - CANAIS ONLINE</h1>
+        <div class="flex">
+          <div class="carPrevBtn2 sm:hidden">
+            <img src="https://www.futtemax.net/icons/angle-left.svg" class="invert w-4 h-4 cursor-pointer mx-2" alt="Anterior" />
+          </div>
+          <div class="carNextBtn2 sm:hidden"><img src="https://www.futtemax.net/icons/angle-right.svg" class="invert w-4 h-4 cursor-pointer mx-2" alt="Próximo" /></div>
+        </div>
+      </div>
+      <section class="max-w-screen-xl mx-auto flex items-center gap-4 relative group w-full">
+        <div class="block relative overflow-hidden w-full pt-[calc((((130/(230))/1)*100%)+80px)] c360:pt-[calc((((130/(230+2.5))/2)*100%)+80px)] c680:pt-[calc((((130/(230+3.33))/3)*100%)+80px)] c900:pt-[calc((((130/(230+4))/4)*100%)+80px)] c1100:pt-[calc((((130/(230+4))/5)*100%)+80px)] h-0">
+          <div class="carPrevBtn2 absolute top-1 left-0 bottom-1 z-10 flex items-center hidden sm:flex">
+            <div class="cursor-pointer -mt-[3px] opacity-0 bg-black/[0.5] group-hover:opacity-100 flex items-center py-2 pr-2 pl-1 rounded-r-full border-t border-r border-b border-white/[0.3]">
+              <img src="https://www.futtemax.net/icons/angle-left.svg" class="invert w-6 h-6" alt="Próximo" />
+            </div>
+          </div>
+          <div class="overflow-hidden w-full h-full absolute inset-0">
+            <div class="owl-carousel owl-car-2 w-full">
+              <div class="item w-full col-span-1">
+                <div class="transition duration-150 ease-in-out opacity-90 hover:opacity-100 cursor-pointer">
+                  <div class="relative rounded-lg overflow-hidden w-full">
+                    <a href="https://www.futtemax.net/assistir-animal-planet-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self" class="block relative overflow-hidden w-full pt-[calc(130/230*100%)] h-0">
+                    <img width="230" height="130" onmouseover="this.src = this.src.split('?')[0]+ '?v=' + Math.floor(Math.random() * (10000 - 0 + 1))" data-src="https://www.futtemax.net/wp-content/uploads/animalplanet.jpg" alt="Assistir ANIMAL PLANET ao vivo grátis" title="Assistir ANIMAL PLANET ao vivo grátis" class="owl-lazy w-full h-full absolute object-cover block inset-0" />
+                    </a>
+                    <div class="bg-black/[0.7] text-xs uppercase font-bold px-2 py-1 rounded-b-lg z-10 text-center text-normal text-stone-100 h-10 flex justify-center items-center w-full "><a href="https://www.futtemax.net/assistir-animal-planet-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">Assistir ANIMAL PLANET ao vivo no celular online grátis</a></div>
+                  </div>
+                </div>
+              </div>
+              <div class="item w-full col-span-1">
+                <div class="transition duration-150 ease-in-out opacity-90 hover:opacity-100 cursor-pointer">
+                  <div class="relative rounded-lg overflow-hidden w-full">
+                    <a href="https://www.futtemax.net/assistir-band-news-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self" class="block relative overflow-hidden w-full pt-[calc(130/230*100%)] h-0">
+                    <img width="230" height="130" onmouseover="this.src = this.src.split('?')[0]+ '?v=' + Math.floor(Math.random() * (10000 - 0 + 1))" data-src="https://www.futtemax.net/wp-content/uploads/bandnews.jpg" alt="Assistir BAND NEWS ao vivo grátis" title="Assistir BAND NEWS ao vivo grátis" class="owl-lazy w-full h-full absolute object-cover block inset-0" />
+                    </a>
+                    <div class="bg-black/[0.7] text-xs uppercase font-bold px-2 py-1 rounded-b-lg z-10 text-center text-normal text-stone-100 h-10 flex justify-center items-center w-full "><a href="https://www.futtemax.net/assistir-band-news-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">Assistir BAND NEWS ao vivo no celular online grátis</a></div>
+                  </div>
+                </div>
+              </div>
+              <div class="item w-full col-span-1">
+                <div class="transition duration-150 ease-in-out opacity-90 hover:opacity-100 cursor-pointer">
+                  <div class="relative rounded-lg overflow-hidden w-full">
+                    <a href="https://www.futtemax.net/assistir-record-news-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self" class="block relative overflow-hidden w-full pt-[calc(130/230*100%)] h-0">
+                    <img width="230" height="130" onmouseover="this.src = this.src.split('?')[0]+ '?v=' + Math.floor(Math.random() * (10000 - 0 + 1))" data-src="https://www.futtemax.net/wp-content/uploads/recordnews.jpg" alt="Assistir RECORD NEWS online ao vivo HD" title="Assistir RECORD NEWS online ao vivo HD" class="owl-lazy w-full h-full absolute object-cover block inset-0" />
+                    </a>
+                    <div class="bg-black/[0.7] text-xs uppercase font-bold px-2 py-1 rounded-b-lg z-10 text-center text-normal text-stone-100 h-10 flex justify-center items-center w-full "><a href="https://www.futtemax.net/assistir-record-news-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">Assistir RECORD NEWS ao vivo no celular online grátis</a></div>
+                  </div>
+                </div>
+              </div>
+              <div class="item w-full col-span-1">
+                <div class="transition duration-150 ease-in-out opacity-90 hover:opacity-100 cursor-pointer">
+                  <div class="relative rounded-lg overflow-hidden w-full">
+                    <a href="https://www.futtemax.net/assistir-comedy-central-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self" class="block relative overflow-hidden w-full pt-[calc(130/230*100%)] h-0">
+                    <img width="230" height="130" onmouseover="this.src = this.src.split('?')[0]+ '?v=' + Math.floor(Math.random() * (10000 - 0 + 1))" data-src="https://www.futtemax.net/wp-content/uploads/comedycentral.jpg" alt="Assistir COMEDY CENTRAL ao vivo grátis" title="Assistir COMEDY CENTRAL ao vivo grátis" class="owl-lazy w-full h-full absolute object-cover block inset-0" />
+                    </a>
+                    <div class="bg-black/[0.7] text-xs uppercase font-bold px-2 py-1 rounded-b-lg z-10 text-center text-normal text-stone-100 h-10 flex justify-center items-center w-full "><a href="https://www.futtemax.net/assistir-comedy-central-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">Assistir COMEDY CENTRAL ao vivo no celular online grátis</a></div>
+                  </div>
+                </div>
+              </div>
+              <div class="item w-full col-span-1">
+                <div class="transition duration-150 ease-in-out opacity-90 hover:opacity-100 cursor-pointer">
+                  <div class="relative rounded-lg overflow-hidden w-full">
+                    <a href="https://www.futtemax.net/assistir-history-1-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self" class="block relative overflow-hidden w-full pt-[calc(130/230*100%)] h-0">
+                    <img width="230" height="130" onmouseover="this.src = this.src.split('?')[0]+ '?v=' + Math.floor(Math.random() * (10000 - 0 + 1))" data-src="https://www.futtemax.net/wp-content/uploads/history1.jpg" alt="Assistir HISTORY ao vivo 24 horas" title="Assistir HISTORY ao vivo 24 horas" class="owl-lazy w-full h-full absolute object-cover block inset-0" />
+                    </a>
+                    <div class="bg-black/[0.7] text-xs uppercase font-bold px-2 py-1 rounded-b-lg z-10 text-center text-normal text-stone-100 h-10 flex justify-center items-center w-full "><a href="https://www.futtemax.net/assistir-history-1-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">Assistir HISTORY ao vivo no celular online grátis</a></div>
+                  </div>
+                </div>
+              </div>
+              <div class="item w-full col-span-1">
+                <div class="transition duration-150 ease-in-out opacity-90 hover:opacity-100 cursor-pointer">
+                  <div class="relative rounded-lg overflow-hidden w-full">
+                    <a href="https://www.futtemax.net/assistir-history-2-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self" class="block relative overflow-hidden w-full pt-[calc(130/230*100%)] h-0">
+                    <img width="230" height="130" onmouseover="this.src = this.src.split('?')[0]+ '?v=' + Math.floor(Math.random() * (10000 - 0 + 1))" data-src="https://www.futtemax.net/wp-content/uploads/history2.jpg" alt="Assistir H2 - 24 horas online " title="Assistir H2 - 24 horas online " class="owl-lazy w-full h-full absolute object-cover block inset-0" />
+                    </a>
+                    <div class="bg-black/[0.7] text-xs uppercase font-bold px-2 py-1 rounded-b-lg z-10 text-center text-normal text-stone-100 h-10 flex justify-center items-center w-full "><a href="https://www.futtemax.net/assistir-history-2-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">Assistir H2 ao vivo no celular online grátis</a></div>
+                  </div>
+                </div>
+              </div>
+              <div class="item w-full col-span-1">
+                <div class="transition duration-150 ease-in-out opacity-90 hover:opacity-100 cursor-pointer">
+                  <div class="relative rounded-lg overflow-hidden w-full">
+                    <a href="https://www.futtemax.net/assistir-hgtv-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self" class="block relative overflow-hidden w-full pt-[calc(130/230*100%)] h-0">
+                    <img width="230" height="130" onmouseover="this.src = this.src.split('?')[0]+ '?v=' + Math.floor(Math.random() * (10000 - 0 + 1))" data-src="https://www.futtemax.net/wp-content/uploads/hgtv.jpg" alt="Assistir HGTV 2023 online" title="Assistir HGTV online" class="owl-lazy w-full h-full absolute object-cover block inset-0" />
+                    </a>
+                    <div class="bg-black/[0.7] text-xs uppercase font-bold px-2 py-1 rounded-b-lg z-10 text-center text-normal text-stone-100 h-10 flex justify-center items-center w-full "><a href="https://www.futtemax.net/assistir-hgtv-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">Assistir HGTV ao vivo no celular online grátis</a></div>
+                  </div>
+                </div>
+              </div>
+              <div class="item w-full col-span-1">
+                <div class="transition duration-150 ease-in-out opacity-90 hover:opacity-100 cursor-pointer">
+                  <div class="relative rounded-lg overflow-hidden w-full">
+                    <a href="https://www.futtemax.net/assistir-woohoo-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self" class="block relative overflow-hidden w-full pt-[calc(130/230*100%)] h-0">
+                    <img width="230" height="130" onmouseover="this.src = this.src.split('?')[0]+ '?v=' + Math.floor(Math.random() * (10000 - 0 + 1))" data-src="https://www.futtemax.net/wp-content/uploads/woohoo.jpg" alt="Assistir WOOHOO ao vivo HD" title="Assistir WOOHOO ao vivo HD" class="owl-lazy w-full h-full absolute object-cover block inset-0" />
+                    </a>
+                    <div class="bg-black/[0.7] text-xs uppercase font-bold px-2 py-1 rounded-b-lg z-10 text-center text-normal text-stone-100 h-10 flex justify-center items-center w-full "><a href="https://www.futtemax.net/assistir-woohoo-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">Assistir WOOHOO ao vivo no celular online grátis</a></div>
+                  </div>
+                </div>
+              </div>
+              <div class="item w-full col-span-1">
+                <div class="transition duration-150 ease-in-out opacity-90 hover:opacity-100 cursor-pointer">
+                  <div class="relative rounded-lg overflow-hidden w-full">
+                    <a href="https://www.futtemax.net/assistir-food-network-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self" class="block relative overflow-hidden w-full pt-[calc(130/230*100%)] h-0">
+                    <img width="230" height="130" data-src="https://www.futtemax.net/wp-content/uploads/food.jpg" alt="Assistir FOOD NETWORK ao vivo no celular online grátis" title="Assistir FOOD NETWORK ao vivo no celular online grátis" class="owl-lazy w-full h-full absolute object-cover block inset-0" />
+                    </a>
+                    <div class="bg-black/[0.7] text-xs uppercase font-bold px-2 py-1 rounded-b-lg z-10 text-center text-normal text-stone-100 h-20 flex items-center line-clamp-2 w-full"><a href="https://www.futtemax.net/assistir-food-network-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">Assistir FOOD NETWORK ao vivo no celular online grátis</a></div>
+                  </div>
+                </div>
+              </div>
+              <div class="item w-full col-span-1">
+                <div class="transition duration-150 ease-in-out opacity-90 hover:opacity-100 cursor-pointer">
+                  <div class="relative rounded-lg overflow-hidden w-full">
+                    <a href="https://www.futtemax.net/assistir-tlc-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self" class="block relative overflow-hidden w-full pt-[calc(130/230*100%)] h-0">
+                    <img width="230" height="130" data-src="https://www.futtemax.net/wp-content/uploads/tlc.jpg" alt="Assistir TLC ao vivo 24 horas HD online" title="Assistir TLC ao vivo 24 horas HD online" class="owl-lazy w-full h-full absolute object-cover block inset-0" />
+                    </a>
+                    <div class="bg-black/[0.7] text-xs uppercase font-bold px-2 py-1 rounded-b-lg z-10 text-center text-normal text-stone-100 h-20 flex items-center line-clamp-2 w-full"><a href="https://www.futtemax.net/assistir-tlc-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">Assistir TLC ao vivo 24 horas HD online</a></div>
+                  </div>
+                </div>
+              </div>
+              <div class="item w-full col-span-1">
+                <div class="transition duration-150 ease-in-out opacity-90 hover:opacity-100 cursor-pointer">
+                  <div class="relative rounded-lg overflow-hidden w-full">
+                    <a href="https://www.futtemax.net/assistir-canal-off-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self" class="block relative overflow-hidden w-full pt-[calc(130/230*100%)] h-0">
+                    <img width="230" height="130" data-src="https://www.futtemax.net/wp-content/uploads/off.jpg" alt="Assistir CANAL OFF ao vivo tv online" title="Assistir CANAL OFF ao vivo tv online" class="owl-lazy w-full h-full absolute object-cover block inset-0" />
+                    </a>
+                    <div class="bg-black/[0.7] text-xs uppercase font-bold px-2 py-1 rounded-b-lg z-10 text-center text-normal text-stone-100 h-20 flex items-center line-clamp-2 w-full"><a href="https://www.futtemax.net/assistir-canal-off-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">Assistir CANAL OFF ao vivo tv online</a></div>
+                  </div>
+                </div>
+              </div>
+              <div class="item w-full col-span-1">
+                <div class="transition duration-150 ease-in-out opacity-90 hover:opacity-100 cursor-pointer">
+                  <div class="relative rounded-lg overflow-hidden w-full">
+                    <a href="https://www.futtemax.net/assistir-national-geographic-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self" class="block relative overflow-hidden w-full pt-[calc(130/230*100%)] h-0">
+                    <img width="230" height="130" data-src="https://www.futtemax.net/wp-content/uploads/n.geographic.jpg" alt="Assistir NATIONAL GEOGRAPHIC ao vivo tv ao vivo" title="Assistir NATIONAL GEOGRAPHIC ao vivo tv ao vivo" class="owl-lazy w-full h-full absolute object-cover block inset-0" />
+                    </a>
+                    <div class="bg-black/[0.7] text-xs uppercase font-bold px-2 py-1 rounded-b-lg z-10 text-center text-normal text-stone-100 h-20 flex items-center line-clamp-2 w-full"><a href="https://www.futtemax.net/assistir-national-geographic-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">Assistir NATIONAL GEOGRAPHIC ao vivo tv ao vivo</a></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carNextBtn2 absolute top-1 right-0 bottom-1 z-10 flex items-center hidden sm:flex">
+            <div class="cursor-pointer -mt-[3px] opacity-0 bg-black/[0.5] group-hover:opacity-100 flex items-center py-2 pl-2 pr-1 rounded-l-full border-t border-l border-b border-white/[0.3]">
+              <img src="https://www.futtemax.net/icons/angle-right.svg" class="invert w-6 h-6" alt="Próximo" />
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="uppercase text-sm text-yellow-500 font-bold py-4 flex justify-between items-center">
+        <span><a href="/categoria/bbb-2023/" target="_self" rel="bookmark">BBB AO VIVO</a></span>
+        <div class="flex">
+          <div class="carPrevBtn3 sm:hidden">
+            <img src="https://www.futtemax.net/icons/angle-left.svg" class="invert w-4 h-4 cursor-pointer mx-2" alt="Anterior" />
+          </div>
+          <div class="carNextBtn3 sm:hidden"><img src="https://www.futtemax.net/icons/angle-right.svg" class="invert w-4 h-4 cursor-pointer mx-2" alt="Próximo" /></div>
+        </div>
+      </div>
+      <section class="max-w-screen-xl mx-auto flex items-center gap-4 relative group w-full">
+        <div class="block relative overflow-hidden w-full pt-[calc((((130/(230))/1)*100%)+80px)] c360:pt-[calc((((130/(230+2.5))/2)*100%)+80px)] c680:pt-[calc((((130/(230+3.33))/3)*100%)+80px)] c900:pt-[calc((((130/(230+4))/4)*100%)+80px)] c1100:pt-[calc((((130/(230+4))/5)*100%)+80px)] h-0">
+          <div class="carPrevBtn3 absolute top-1 left-0 bottom-1 z-10 flex items-center hidden sm:flex">
+            <div class="cursor-pointer -mt-[3px] opacity-0 bg-black/[0.5] group-hover:opacity-100 flex items-center py-2 pr-2 pl-1 rounded-r-full border-t border-r border-b border-white/[0.3]">
+              <img src="https://www.futtemax.net/icons/angle-left.svg" class="invert w-6 h-6" alt="Próximo" />
+            </div>
+          </div>
+          <div class="overflow-hidden w-full h-full absolute inset-0">
+            <div class="owl-carousel owl-car-3 w-full">
+              <div class="item w-full col-span-1">
+                <div class="transition duration-150 ease-in-out opacity-90 hover:opacity-100 cursor-pointer">
+                  <div class="relative rounded-lg overflow-hidden w-full">
+                    <a href="https://www.futtemax.net/assistir-curta-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self" class="block relative overflow-hidden w-full pt-[calc(130/230*100%)] h-0">
+                    <img width="230" height="130" onmouseover="this.src = this.src.split('?')[0]+ '?v=' + Math.floor(Math.random() * (10000 - 0 + 1))" data-src="https://www.futtemax.net/wp-content/uploads/curta.jpg" alt="Assistir CURTA ao vivo grátis" title="Assistir  CURTA ao vivo grátis" class="owl-lazy w-full h-full absolute object-cover block inset-0" />
+                    </a>
+                    <div class="bg-black/[0.7] text-xs uppercase font-bold px-2 py-1 rounded-b-lg z-10 text-center text-normal text-stone-100 h-10 flex justify-center items-center w-full "><a href="https://www.futtemax.net/assistir-curta-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">CURTA</a></div>
+                  </div>
+                </div>
+              </div>
+              <div class="item w-full col-span-1">
+                <div class="transition duration-150 ease-in-out opacity-90 hover:opacity-100 cursor-pointer">
+                  <div class="relative rounded-lg overflow-hidden w-full">
+                    <a href="https://www.futtemax.net/assistir-travel-box-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self" class="block relative overflow-hidden w-full pt-[calc(130/230*100%)] h-0">
+                    <img width="230" height="130" onmouseover="this.src = this.src.split('?')[0]+ '?v=' + Math.floor(Math.random() * (10000 - 0 + 1))" data-src="https://www.futtemax.net/wp-content/uploads/travelbox.jpg" alt="Assistir TRAVEL BOX ao vivo grátis" title="Assistir TRAVEL BOX ao vivo grátis" class="owl-lazy w-full h-full absolute object-cover block inset-0" />
+                    </a>
+                    <div class="bg-black/[0.7] text-xs uppercase font-bold px-2 py-1 rounded-b-lg z-10 text-center text-normal text-stone-100 h-10 flex justify-center items-center w-full "><a href="https://www.futtemax.net/assistir-travel-box-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">TRAVEL BOX</a></div>
+                  </div>
+                </div>
+              </div>
+              <div class="item w-full col-span-1">
+                <div class="transition duration-150 ease-in-out opacity-90 hover:opacity-100 cursor-pointer">
+                  <div class="relative rounded-lg overflow-hidden w-full">
+                    <a href="https://www.futtemax.net/assistir-prime-box-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self" class="block relative overflow-hidden w-full pt-[calc(130/230*100%)] h-0">
+                    <img width="230" height="130" onmouseover="this.src = this.src.split('?')[0]+ '?v=' + Math.floor(Math.random() * (10000 - 0 + 1))" data-src="https://www.futtemax.net/wp-content/uploads/primebox.jpg" alt="Assistir PRIME BOX online ao vivo HD" title="Assistir PRIME BOX online ao vivo HD" class="owl-lazy w-full h-full absolute object-cover block inset-0" />
+                    </a>
+                    <div class="bg-black/[0.7] text-xs uppercase font-bold px-2 py-1 rounded-b-lg z-10 text-center text-normal text-stone-100 h-10 flex justify-center items-center w-full "><a href="https://www.futtemax.net/assistir-prime-box-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">PRIME BOX</a></div>
+                  </div>
+                </div>
+              </div>
+              <div class="item w-full col-span-1">
+                <div class="transition duration-150 ease-in-out opacity-90 hover:opacity-100 cursor-pointer">
+                  <div class="relative rounded-lg overflow-hidden w-full">
+                    <a href="https://www.futtemax.net/assistir-tbs-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self" class="block relative overflow-hidden w-full pt-[calc(130/230*100%)] h-0">
+                    <img width="230" height="130" onmouseover="this.src = this.src.split('?')[0]+ '?v=' + Math.floor(Math.random() * (10000 - 0 + 1))" data-src="https://www.futtemax.net/wp-content/uploads/tbs.jpg" alt="Assistir TBS ao vivo grátis" title="Assistir TBS ao vivo grátis" class="owl-lazy w-full h-full absolute object-cover block inset-0" />
+                    </a>
+                    <div class="bg-black/[0.7] text-xs uppercase font-bold px-2 py-1 rounded-b-lg z-10 text-center text-normal text-stone-100 h-10 flex justify-center items-center w-full "><a href="https://www.futtemax.net/assistir-tbs-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">TBS</a></div>
+                  </div>
+                </div>
+              </div>
+              <div class="item w-full col-span-1">
+                <div class="transition duration-150 ease-in-out opacity-90 hover:opacity-100 cursor-pointer">
+                  <div class="relative rounded-lg overflow-hidden w-full">
+                    <a href="https://www.futtemax.net/assistir-dazn-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self" class="block relative overflow-hidden w-full pt-[calc(130/230*100%)] h-0">
+                    <img width="230" height="130" onmouseover="this.src = this.src.split('?')[0]+ '?v=' + Math.floor(Math.random() * (10000 - 0 + 1))" data-src="https://www.futtemax.net/wp-content/uploads/dazn.jpg" alt="Assistir DAZN ao vivo 24 horas" title="Assistir DAZN ao vivo 24 horas" class="owl-lazy w-full h-full absolute object-cover block inset-0" />
+                    </a>
+                    <div class="bg-black/[0.7] text-xs uppercase font-bold px-2 py-1 rounded-b-lg z-10 text-center text-normal text-stone-100 h-10 flex justify-center items-center w-full "><a href="https://www.futtemax.net/assistir-dazn-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">DAZN</a></div>
+                  </div>
+                </div>
+              </div>
+              <div class="item w-full col-span-1">
+                <div class="transition duration-150 ease-in-out opacity-90 hover:opacity-100 cursor-pointer">
+                  <div class="relative rounded-lg overflow-hidden w-full">
+                    <a href="https://www.futtemax.net/assistir-hbo-max-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self" class="block relative overflow-hidden w-full pt-[calc(130/230*100%)] h-0">
+                    <img width="230" height="130" onmouseover="this.src = this.src.split('?')[0]+ '?v=' + Math.floor(Math.random() * (10000 - 0 + 1))" data-src="https://www.futtemax.net/wp-content/uploads/hbomax.jpg" alt="Assistir ESTADIO TNT SPORTS- 24 horas online " title="Assistir ESTADIO TNT SPORTS - 24 horas online" class="owl-lazy w-full h-full absolute object-cover block inset-0" />
+                    </a>
+                    <div class="bg-black/[0.7] text-xs uppercase font-bold px-2 py-1 rounded-b-lg z-10 text-center text-normal text-stone-100 h-10 flex justify-center items-center w-full "><a href="https://www.futtemax.net/assistir-hbo-max-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">ESTADIO TNT</a></div>
+                  </div>
+                </div>
+              </div>
+              <div class="item w-full col-span-1">
+                <div class="transition duration-150 ease-in-out opacity-90 hover:opacity-100 cursor-pointer">
+                  <div class="relative rounded-lg overflow-hidden w-full">
+                    <a href="https://www.futtemax.net/assistir-eleven-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self" class="block relative overflow-hidden w-full pt-[calc(130/230*100%)] h-0">
+                    <img width="230" height="130" onmouseover="this.src = this.src.split('?')[0]+ '?v=' + Math.floor(Math.random() * (10000 - 0 + 1))" data-src="https://www.futtemax.net/wp-content/uploads/eleven.jpg" alt="Assistir ELEVEN - ao vivo online" title="Assistir ELEVEN - ao vivo online" class="owl-lazy w-full h-full absolute object-cover block inset-0" />
+                    </a>
+                    <div class="bg-black/[0.7] text-xs uppercase font-bold px-2 py-1 rounded-b-lg z-10 text-center text-normal text-stone-100 h-10 flex justify-center items-center w-full "><a href="https://www.futtemax.net/assistir-eleven-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">ELEVEN</a></div>
+                  </div>
+                </div>
+              </div>
+              <div class="item w-full col-span-1">
+                <div class="transition duration-150 ease-in-out opacity-90 hover:opacity-100 cursor-pointer">
+                  <div class="relative rounded-lg overflow-hidden w-full">
+                    <a href="https://www.futtemax.net/assistir-sexyhot-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self" class="block relative overflow-hidden w-full pt-[calc(130/230*100%)] h-0">
+                    <img width="230" height="130" onmouseover="this.src = this.src.split('?')[0]+ '?v=' + Math.floor(Math.random() * (10000 - 0 + 1))" data-src="https://www.futtemax.net/wp-content/uploads/sexyhot.jpg" alt="Assistir SEXYHOT ao vivo HD" title="Assistir SEXYHOT ao vivo HD" class="owl-lazy w-full h-full absolute object-cover block inset-0" />
+                    </a>
+                    <div class="bg-black/[0.7] text-xs uppercase font-bold px-2 py-1 rounded-b-lg z-10 text-center text-normal text-stone-100 h-10 flex justify-center items-center w-full "><a href="https://www.futtemax.net/assistir-sexyhot-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">SEXYHOT</a></div>
+                  </div>
+                </div>
+              </div>
+              <div class="item w-full col-span-1">
+                <div class="transition duration-150 ease-in-out opacity-90 hover:opacity-100 cursor-pointer">
+                  <div class="relative rounded-lg overflow-hidden w-full">
+                    <a href="https://www.futtemax.net/assistir-globo-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self" class="block relative overflow-hidden w-full pt-[calc(130/230*100%)] h-0">
+                    <img width="230" height="130" onmouseover="this.src = this.src.split('?')[0]+ '?v=' + Math.floor(Math.random() * (10000 - 0 + 1))" data-src="https://www.futtemax.net/wp-content/uploads/globo.jpg" alt="Assistir GLOBO ao vivo grátis" title="Assistir GLOBO ao vivo grátis" class="owl-lazy w-full h-full absolute object-cover block inset-0" />
+                    </a>
+                    <div class="bg-black/[0.7] text-xs uppercase font-bold px-2 py-1 rounded-b-lg z-10 text-center text-normal text-stone-100 h-10 flex justify-center items-center w-full "><a href="https://www.futtemax.net/assistir-globo-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">GLOBO</a></div>
+                  </div>
+                </div>
+              </div>
+              <div class="item w-full col-span-1">
+                <div class="transition duration-150 ease-in-out opacity-90 hover:opacity-100 cursor-pointer">
+                  <div class="relative rounded-lg overflow-hidden w-full">
+                    <a href="https://www.futtemax.net/assistir-globo-news-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self" class="block relative overflow-hidden w-full pt-[calc(130/230*100%)] h-0">
+                    <img width="230" height="130" onmouseover="this.src = this.src.split('?')[0]+ '?v=' + Math.floor(Math.random() * (10000 - 0 + 1))" data-src="https://www.futtemax.net/wp-content/uploads/globonews.jpg" alt="Assistir GLOBONEWS ao vivo 24 horas" title="Assistir GLOBONEWS ao vivo 24 horas" class="owl-lazy w-full h-full absolute object-cover block inset-0" />
+                    </a>
+                    <div class="bg-black/[0.7] text-xs uppercase font-bold px-2 py-1 rounded-b-lg z-10 text-center text-normal text-stone-100 h-10 flex justify-center items-center w-full "><a href="https://www.futtemax.net/assistir-globo-news-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">GLOBONEWS</a></div>
+                  </div>
+                </div>
+              </div>
+              <div class="item w-full col-span-1">
+                <div class="transition duration-150 ease-in-out opacity-90 hover:opacity-100 cursor-pointer">
+                  <div class="relative rounded-lg overflow-hidden w-full">
+                    <a href="https://www.futtemax.net/assistir-viva-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self" class="block relative overflow-hidden w-full pt-[calc(130/230*100%)] h-0">
+                    <img width="230" height="130" onmouseover="this.src = this.src.split('?')[0]+ '?v=' + Math.floor(Math.random() * (10000 - 0 + 1))" data-src="https://www.futtemax.net/wp-content/uploads/viva.jpg" alt="Assistir VIVA online 24 horas grátis" title="Assistir ao vivo - VIVA online 24 horas grátis" class="owl-lazy w-full h-full absolute object-cover block inset-0" />
+                    </a>
+                    <div class="bg-black/[0.7] text-xs uppercase font-bold px-2 py-1 rounded-b-lg z-10 text-center text-normal text-stone-100 h-10 flex justify-center items-center w-full "><a href="https://www.futtemax.net/assistir-viva-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">VIVA</a></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carNextBtn3 absolute top-1 right-0 bottom-1 z-10 flex items-center hidden sm:flex">
+            <div class="cursor-pointer -mt-[3px] opacity-0 bg-black/[0.5] group-hover:opacity-100 flex items-center py-2 pl-2 pr-1 rounded-l-full border-t border-l border-b border-white/[0.3]">
+              <img src="https://www.futtemax.net/icons/angle-right.svg" class="invert w-6 h-6" alt="Próximo" />
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="uppercase text-sm text-yellow-500 font-bold py-4 flex justify-between items-center">
+        <span><a href="/categoria/esportes/" target="_self" rel="bookmark">Canais de Esportes</a></span>
+        <div class="flex">
+          <div class="carPrevBtn4 sm:hidden">
+            <img src="https://www.futtemax.net/icons/angle-left.svg" class="invert w-4 h-4 cursor-pointer mx-2" alt="Anterior" />
+          </div>
+          <div class="carNextBtn4 sm:hidden"><img src="https://www.futtemax.net/icons/angle-right.svg" class="invert w-4 h-4 cursor-pointer mx-2" alt="Próximo" /></div>
+        </div>
+      </div>
+      <section class="max-w-screen-xl mx-auto flex items-center gap-4 relative group w-full">
+        <div class="block relative overflow-hidden w-full pt-[calc((((130/(230))/1)*100%)+80px)] c360:pt-[calc((((130/(230+2.5))/2)*100%)+80px)] c680:pt-[calc((((130/(230+3.33))/3)*100%)+80px)] c900:pt-[calc((((130/(230+4))/4)*100%)+80px)] c1100:pt-[calc((((130/(230+4))/5)*100%)+80px)] h-0">
+          <div class="carPrevBtn4 absolute top-1 left-0 bottom-1 z-10 flex items-center hidden sm:flex">
+            <div class="cursor-pointer -mt-[3px] opacity-0 bg-black/[0.5] group-hover:opacity-100 flex items-center py-2 pr-2 pl-1 rounded-r-full border-t border-r border-b border-white/[0.3]">
+              <img src="https://www.futtemax.net/icons/angle-left.svg" class="invert w-6 h-6" alt="Próximo" />
+            </div>
+          </div>
+          <div class="overflow-hidden w-full h-full absolute inset-0">
+            <div class="owl-carousel owl-car-4 w-full">
+              <div class="item w-full col-span-1">
+                <div class="transition duration-150 ease-in-out opacity-90 hover:opacity-100 cursor-pointer">
+                  <div class="relative rounded-lg overflow-hidden w-full">
+                    <a href="https://www.futtemax.net/assistir-paramount+-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self" class="block relative overflow-hidden w-full pt-[calc(130/230*100%)] h-0">
+                    <img width="230" height="130" data-src="https://www.futtemax.net/wp-content/uploads/paramount+.jpg" alt="Assistir PARAMOUNT+ ao vivo 24 horas HD online" title="Assistir PARAMOUNT+ ao vivo 24 horas HD online" class="owl-lazy w-full h-full absolute object-cover block inset-0" />
+                    </a>
+                    <div class="bg-black/[0.7] text-xs uppercase font-bold px-2 py-1 rounded-b-lg z-10 text-center text-normal text-stone-100 h-20 flex items-center line-clamp-2 w-full"><a href="https://www.futtemax.net/assistir-paramount+-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">Assistir PARAMOUNT+ ao vivo 24 horas HD online</a></div>
+                  </div>
+                </div>
+              </div>
+              <div class="item w-full col-span-1">
+                <div class="transition duration-150 ease-in-out opacity-90 hover:opacity-100 cursor-pointer">
+                  <div class="relative rounded-lg overflow-hidden w-full">
+                    <a href="https://www.futtemax.net/assistir-prime-video-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self" class="block relative overflow-hidden w-full pt-[calc(130/230*100%)] h-0">
+                    <img width="230" height="130" data-src="https://www.futtemax.net/wp-content/uploads/prime.jpg" alt="Assistir PRIME VIDEO ao vivo tv online" title="Assistir PRIME VIDEO ao vivo tv online" class="owl-lazy w-full h-full absolute object-cover block inset-0" />
+                    </a>
+                    <div class="bg-black/[0.7] text-xs uppercase font-bold px-2 py-1 rounded-b-lg z-10 text-center text-normal text-stone-100 h-20 flex items-center line-clamp-2 w-full"><a href="https://www.futtemax.net/assistir-prime-video-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">Assistir PRIME VIDEO 2 ao vivo tv online</a></div>
+                  </div>
+                </div>
+              </div>
+              <div class="item w-full col-span-1">
+                <div class="transition duration-150 ease-in-out opacity-90 hover:opacity-100 cursor-pointer">
+                  <div class="relative rounded-lg overflow-hidden w-full">
+                    <a href="https://www.futtemax.net/assistir-futebol-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self" class="block relative overflow-hidden w-full pt-[calc(130/230*100%)] h-0">
+                    <img width="230" height="130" data-src="https://www.futtemax.net/wp-content/uploads/futebol.jpg" alt="Assistir UFC FIGHT PASS ao vivo tv ao vivo" title="Assistir UFC FIGHT PASS ao vivo tv ao vivo" class="owl-lazy w-full h-full absolute object-cover block inset-0" />
+                    </a>
+                    <div class="bg-black/[0.7] text-xs uppercase font-bold px-2 py-1 rounded-b-lg z-10 text-center text-normal text-stone-100 h-20 flex items-center line-clamp-2 w-full"><a href="https://www.futtemax.net/assistir-futebol-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">Assistir FUTEBOL ao vivo tv ao vivo</a></div>
+                  </div>
+                </div>
+              </div>
+              <div class="item w-full col-span-1">
+                <div class="transition duration-150 ease-in-out opacity-90 hover:opacity-100 cursor-pointer">
+                  <div class="relative rounded-lg overflow-hidden w-full">
+                    <a href="https://www.futtemax.net/assistir-espn-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self" class="block relative overflow-hidden w-full pt-[calc(130/230*100%)] h-0">
+                    <img width="230" height="130" data-src="https://www.futtemax.net/wp-content/uploads/espn.jpg" alt="Assistir ESPN ao vivo grátis 24 horas online" title="Assistir ESPN ao vivo grátis 24 horas online" class="owl-lazy w-full h-full absolute object-cover block inset-0" />
+                    </a>
+                    <div class="bg-black/[0.7] text-xs uppercase font-bold px-2 py-1 rounded-b-lg z-10 text-center text-normal text-stone-100 h-20 flex items-center line-clamp-2 w-full"><a href="https://www.futtemax.net/assistir-espn-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">Assistir ESPN ao vivo grátis 24 horas online</a></div>
+                  </div>
+                </div>
+              </div>
+              <div class="item w-full col-span-1">
+                <div class="transition duration-150 ease-in-out opacity-90 hover:opacity-100 cursor-pointer">
+                  <div class="relative rounded-lg overflow-hidden w-full">
+                    <a href="https://www.futtemax.net/assistir-espn-4-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self" class="block relative overflow-hidden w-full pt-[calc(130/230*100%)] h-0">
+                    <img width="230" height="130" data-src="https://www.futtemax.net/wp-content/uploads/espn4.jpg" alt="Assistir ESPN 4 ao vivo 24 horas grátis" title="Assistir ESPN 4 ao vivo 24 horas grátis" class="owl-lazy w-full h-full absolute object-cover block inset-0" />
+                    </a>
+                    <div class="bg-black/[0.7] text-xs uppercase font-bold px-2 py-1 rounded-b-lg z-10 text-center text-normal text-stone-100 h-20 flex items-center line-clamp-2 w-full"><a href="https://www.futtemax.net/assistir-espn-4-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">Assistir ESPN 4 ao vivo 24 horas grátis</a></div>
+                  </div>
+                </div>
+              </div>
+              <div class="item w-full col-span-1">
+                <div class="transition duration-150 ease-in-out opacity-90 hover:opacity-100 cursor-pointer">
+                  <div class="relative rounded-lg overflow-hidden w-full">
+                    <a href="https://www.futtemax.net/assistir-combate-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self" class="block relative overflow-hidden w-full pt-[calc(130/230*100%)] h-0">
+                    <img width="230" height="130" data-src="https://www.futtemax.net/wp-content/uploads/combate.jpg" alt="Assistir COMBATE ao vivo grátis 24 horas online" title="Assistir COMBATE ao vivo grátis 24 horas online" class="owl-lazy w-full h-full absolute object-cover block inset-0" />
+                    </a>
+                    <div class="bg-black/[0.7] text-xs uppercase font-bold px-2 py-1 rounded-b-lg z-10 text-center text-normal text-stone-100 h-20 flex items-center line-clamp-2 w-full"><a href="https://www.futtemax.net/assistir-combate-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">Assistir COMBATE ao vivo grátis 24 horas online</a></div>
+                  </div>
+                </div>
+              </div>
+              <div class="item w-full col-span-1">
+                <div class="transition duration-150 ease-in-out opacity-90 hover:opacity-100 cursor-pointer">
+                  <div class="relative rounded-lg overflow-hidden w-full">
+                    <a href="https://www.futtemax.net/assistir-hbo-max-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self" class="block relative overflow-hidden w-full pt-[calc(130/230*100%)] h-0">
+                    <img width="230" height="130" data-src="https://www.futtemax.net/wp-content/uploads/hbomax.jpg" alt="Assistir HBO MAX ao vivo 24 horas grátis" title="Assistir HBO MAX ao vivo 24 horas grátis" class="owl-lazy w-full h-full absolute object-cover block inset-0" />
+                    </a>
+                    <div class="bg-black/[0.7] text-xs uppercase font-bold px-2 py-1 rounded-b-lg z-10 text-center text-normal text-stone-100 h-20 flex items-center line-clamp-2 w-full"><a href="https://www.futtemax.net/assistir-hbo-max-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">Assistir HBO MAX ao vivo 24 horas grátis</a></div>
+                  </div>
+                </div>
+              </div>
+              <div class="item w-full col-span-1">
+                <div class="transition duration-150 ease-in-out opacity-90 hover:opacity-100 cursor-pointer">
+                  <div class="relative rounded-lg overflow-hidden w-full">
+                    <a href="https://www.futtemax.net/assistir-band-sports-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self" class="block relative overflow-hidden w-full pt-[calc(130/230*100%)] h-0">
+                    <img width="230" height="130" data-src="https://www.futtemax.net/wp-content/uploads/bandsports.jpg" alt="Assistir BANDSPORTS ao vivo sem travar 24 horas HD" title="Assistir BANDSPORTS ao vivo sem travar 24 horas HD" class="owl-lazy w-full h-full absolute object-cover block inset-0" />
+                    </a>
+                    <div class="bg-black/[0.7] text-xs uppercase font-bold px-2 py-1 rounded-b-lg z-10 text-center text-normal text-stone-100 h-20 flex items-center line-clamp-2 w-full"><a href="https://www.futtemax.net/assistir-band-sports-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">Assistir BANDSPORTS ao vivo sem travar 24 horas HD</a></div>
+                  </div>
+                </div>
+              </div>
+              <div class="item w-full col-span-1">
+                <div class="transition duration-150 ease-in-out opacity-90 hover:opacity-100 cursor-pointer">
+                  <div class="relative rounded-lg overflow-hidden w-full">
+                    <a href="https://www.futtemax.net/assistir-premiere-1-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self" class="block relative overflow-hidden w-full pt-[calc(130/230*100%)] h-0">
+                    <img width="230" height="130" data-src="https://www.futtemax.net/wp-content/uploads/premiere1.jpg" alt="Assistir PREMIERE CLUBES ao vivo no celular online grátis" title="Assistir PREMIERE CLUBES ao vivo no celular online grátis" class="owl-lazy w-full h-full absolute object-cover block inset-0" />
+                    </a>
+                    <div class="bg-black/[0.7] text-xs uppercase font-bold px-2 py-1 rounded-b-lg z-10 text-center text-normal text-stone-100 h-20 flex items-center line-clamp-2 w-full"><a href="https://www.futtemax.net/assistir-premiere-1-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">Assistir PREMIERE CLUBES ao vivo no celular online grátis</a></div>
+                  </div>
+                </div>
+              </div>
+              <div class="item w-full col-span-1">
+                <div class="transition duration-150 ease-in-out opacity-90 hover:opacity-100 cursor-pointer">
+                  <div class="relative rounded-lg overflow-hidden w-full">
+                    <a href="https://www.futtemax.net/assistir-premiere-2-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self" class="block relative overflow-hidden w-full pt-[calc(130/230*100%)] h-0">
+                    <img width="230" height="130" data-src="https://www.futtemax.net/wp-content/uploads/premiere2.jpg" alt="Assistir PREMIERE 2 ao vivo sem travar 24 horas HD" title="Assistir PREMIERE 2 ao vivo sem travar 24 horas HD" class="owl-lazy w-full h-full absolute object-cover block inset-0" />
+                    </a>
+                    <div class="bg-black/[0.7] text-xs uppercase font-bold px-2 py-1 rounded-b-lg z-10 text-center text-normal text-stone-100 h-20 flex items-center line-clamp-2 w-full"><a href="https://www.futtemax.net/assistir-premiere-2-ao-vivo-online-gratis-24-horas-hd/" rel="bookmark" target="_self">Assistir PREMIERE 2 ao vivo sem travar 24 horas HD</a></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carNextBtn4 absolute top-1 right-0 bottom-1 z-10 flex items-center hidden sm:flex">
+            <div class="cursor-pointer -mt-[3px] opacity-0 bg-black/[0.5] group-hover:opacity-100 flex items-center py-2 pl-2 pr-1 rounded-l-full border-t border-l border-b border-white/[0.3]">
+              <img src="https://www.futtemax.net/icons/angle-right.svg" class="invert w-6 h-6" alt="Próximo" />
+            </div>
+          </div>
+        </div>
+      </section>
+      <script defer src="https://www.futtemax.net/js/home.js?v=2"></script>
+    </section>
+    <footer id="footer">
+      <section class="max-w-screen-xl mx-auto p-4 text-center text-stone-300 uppercase text-sm font-bold mt-4">
+        Futtemax - TV ONLINE GRÁTIS - BBB AO VIVO - FUTEBOL AO VIVO
+      </section>
+    </footer>
+    
+    <!-- Bate Papo -->
+    <script id="chatBroEmbedCode">/* Chatbro Widget Embed Code Start */function ChatbroLoader(chats,async){async=!1!==async;var params={embedChatsParameters:chats instanceof Array?chats:[chats],lang:navigator.language||navigator.userLanguage,needLoadCode:'undefined'==typeof Chatbro,embedParamsVersion:localStorage.embedParamsVersion,chatbroscriptVersion:localStorage.chatbroscriptVersion},xhr=new XMLHttpRequest;xhr.withCredentials=!0,xhr.onload=function(){eval(xhr.responseText)},xhr.onerror=function(){console.error('Chatbro loading error')},xhr.open('GET','//www.chatbro.com/embed.js?'+btoa(unescape(encodeURIComponent(JSON.stringify(params)))),async),xhr.send()}/* Chatbro Widget Embed Code End */ChatbroLoader({encodedChatId: '28pFK'});</script>
+    <!-- Bate Papo -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3NKYTJWVEY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-3NKYTJWVEY');
+    </script>
+  </body>
 </html>
