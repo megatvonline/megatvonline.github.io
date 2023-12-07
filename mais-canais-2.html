@@ -1,302 +1,15 @@
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta http-equiv="title" content="📺 Assistir TV Online Grátis Ao Vivo">
-<meta http-equiv="description" content="">
-<meta http-equiv="keyworks" content="">
-<meta property="og:title" content="">
-<meta property="og:description" content="">
-<meta property="og:image" content="">
-<meta property="og:url" content="https://megatvonline.github.io">
-<meta property="og:type" content="website">
 <title>📺 Assistir TV Online Grátis Ao Vivo</title>
-<link rel="shortcut icon" href="">
+<meta name="description" content="📺 Assistir TV Online Grátis Ao Vivo">
+<meta name="keywords" content="📺 Assistir TV Online Grátis Ao Vivo">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
-<style>
-        body {
-            background: #222;
-            line-height: 0;
-        }
+<link rel="stylesheet" href="/style.css">
 
-        #header {
-            height: 70px;
-            background-color: rgba(22, 22, 22, .8);
-            border-bottom: 1px solid rgba(44, 44, 44, .9);
-            width: 100%;
-            display: flex;
-            line-height: 70px;
-            font-size: 22px;
-            position: fixed;
-            top: 0;
-            z-index: 10;
-        }
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-        #header i {
-            color: #999;
-        }
-
-        #header i:hover {
-            color: #2631cd;
-        }
-
-        #header .logo img {
-            max-width: 108px;
-        }
-
-        #player-container {
-            border-radius: 10px;
-            margin-top: 70px;
-            overflow: hidden;
-        }
-
-        .full-container {
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        #player {
-            height: 550px;
-        }
-
-        #player iframe {
-            width: 100%;
-			height: 100%;
-            <!--height: calc(100% - 50px);-->
-        }
-
-        #options-player {
-            background-color: #0006ff94;
-        }
-
-        #options-player .options {
-            display: inline-block;
-            margin: 5px 2.5px;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 14px;
-            background-color: rgba(0, 0, 0, .4);
-            height: 40px;
-            line-height: 40px;
-            padding: 0 10px;
-            color: #fff;
-            text-decoration: none;
-        }
-
-        #options-player .options.active {
-            background-color: rgba(0, 0, 0, .8);
-        }
-
-        /* SEARCH CHANNEL */
-
-        .search-channel input {
-            height: 60px;
-            font-size: 20px;
-        }
-
-        /* CHANNEL LIST */
-
-        .list-channels {
-            height: 491px;
-        }
-
-        .channel a {
-            display: flex;
-            align-items: center;
-            background-color: #111111;
-            border-bottom: #333 solid 1px;
-            cursor: pointer;
-            text-decoration: none;
-        }
-
-        .channel a:hover {
-            background-color: #181818
-        }
-
-        .channel a.active {
-            background-color: #333333
-        }
-
-        .channel span {
-            line-height: 1.5;
-        }
-
-        .channel a.active span {
-            display: block !important;
-        }
-
-        .channel .number {
-            flex: 1;
-            font-size: 25px;
-            font-weight: 700;
-            line-height: 80px;
-            color: #fff;
-            padding: 0 5px;
-        }
-
-        .channel img {
-            max-width: 100%;
-        }
-
-        .channel .logo {
-            flex: 3;
-            max-width: 150px;
-        }
-
-        .logo-others img {
-            min-width: 70px;
-            max-width: 110px;
-            width: 100%;
-        }
-
-        .logo-others:nth-child(1) img{
-            min-width: 72px;
-        }
-
-        .channel .name {
-            flex: 3;
-            color: #fff;
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        /* ALERT BOX */
-
-        .alert .bg-danger {
-            background-color: #f81810 !important;
-        }
-
-        .alert .card-text {
-            font-weight: 700;
-            font-family: Tahoma;
-            font-size: large;
-            text-align: center;
-            line-height: 1.5;
-            font-size: 18px;
-        }
-
-
-        .alert .card-icons img {
-            max-width: 33px;
-        }
-
-        .alert .whatsapp a {
-            text-decoration: none;
-            font-weight: bold;
-            color: #fff;
-            line-height: 1.5;
-            min-width: 33px;
-        }
-
-        .alert .whatsapp a span {
-            display: block;
-        }
-
-        .alert .whatsapp img {
-            max-width: 33px;
-        }
-
-        /* set max width for mobile */
-        @media (max-width: 767px){
-            #header .logo img {
-                min-width: 70px !important;
-                max-width: 150px;
-                width: 100%;
-            }
-
-            .logo-others img{
-                width: 72px;
-            }
-        }
-
-        @media (min-width: 768px) and (max-width: 768px) {
-            #header .logo img {
-                max-width: 124px;
-            }
-
-            .container-logo {
-                margin-left: 1rem !important;
-            }
-        }
-
-        @media (min-width: 768px) {
-            .alert .whatsapp img {
-                max-width: 40px;
-            }
-
-            .alert .card-icons img {
-                max-width: 40px;
-            }
-
-            .alert .whatsapp .icons {
-                flex: 0 0 13.666667%;
-                max-width: 13.666667%;
-            }
-
-
-
-        }
-
-        /* FOOTER */
-
-        footer {
-            font-size: 12px;
-            padding: 30px 0;
-            margin: 0 auto;
-            background-color: #1f1f1f;
-            margin-top: 40px;
-        }
-
-        footer h3 {
-            border-bottom: none;
-            color: #fff;
-            font-size: 13px;
-        }
-
-        footer section {
-            display: flex;
-            flex-direction: column;
-        }
-
-        footer section div {
-            display: flex;
-            flex-direction: column;
-        }
-
-        footer a {
-            color: #777;
-            margin: 10px 0;
-
-        }
-
-        footer a:hover {
-            color: #4c9ed9;
-            text-decoration: none;
-        }
-
-        footer p {
-            color: #aaa;
-            padding-left: 0;
-            line-height: 1.5;
-        }
-
-        @media screen and (max-width: 990px) {
-            #player {
-                height: 380px;
-            }
-
-            .list-channels {
-                height: 350px;
-            }
-        }
-    </style>
 <SCRIPT LANGUAGE="JavaScript">
 <!-- Disable
 function disableselect(e){
@@ -316,19 +29,19 @@ document.onmousedown=disableselect
 document.onclick=reEnable
 }
 //-->
-</script>	
+</script>
 <style>
 ul {
   list-style-type: none;
-  margin: 10;
+  margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #222;
+  background-color: #0f2048;
 }
 
 li {
   float: left;
-  border-right:1px solid #222;
+  border-right:1px solid #0f2048;
 }
 
 li:last-child {
@@ -340,1467 +53,1612 @@ li a {
   color: white;
   text-align: center;
   padding: 14px 16px;
-} a:hover {	
   text-decoration: none;
-} a:hover {
- color: #FFF;
-
-}	
+}
 
 li a:hover:not(.active) {
   background-color: #111;
 }
 
 .active {
-  background-color: #222;
+  background-color: #0f2048;
 }
-</style>	
+</style>
 </head>
 <body ondragstart="return false">
-<header id="header">
-<section class="container-fluid px-sm-5 px-3 d-flex align-items-center">
-<div class="col-sm-1 col-2 p-0 mr-sm-2 d-flex justify-content-center">
-<a href="https://megatvonline.github.io">
-<i class="fa fa-home fa-w-18"></i>
-</a>
-</div>
-<div class="col-sm-2 col-3 offset-lg-3 d-flex justify-content-center container-logo">
-<a class="logo">
-</a>
-</div>
-<div class="col-5 col-lg-3 offset-lg-3 offset-3 p-0 d-flex justify-content-end align-items-center">
-<div class="d-flex justify-content-between">
-<a class="logo-others mr-1 mr-lg-3">
-</a>
-<a class="logo-others mr-3">
-</a>
-</div>
-<a class="invisible" href="#">
-<i class="fa fa-share-alt fa-w-18"></i>
-</a>
-</div>
-</section>
-</header>
-<section id="player-container">
 <ul>
-<li><a class="active" href="mais-canais-3" alt><b>+ Canais</b></a></li>
-</ul>	
-<div class="container-fluid mt-3 px-4">
-<div class="d-lg-flex full-container">
-<section id="player" class="col-lg-8 col-xs-12 p-0">
-<iframe src="/canais-3/globo-rj-ao-vivo.html" name="Player" "" frameborder="0" scrolling="no" allow="encrypted-media" allowfullscreen></iframe>
+<li><a class="active" href="/mais-canais-4"><b>+ Canais</b></a></li>
+</ul>  
+  <center><div class="header">
+    <div class="container">
+      <h1>Selecione um Canal</h1>
+      
+    </div>
+  </div></center>
+  
+<div class="container">
+  <div class="canais">
+                  <div class="canal">
+          <div class="imagem">
+            <img src="logos/rede-globo.png" title="Globo RJ" alt="Globo RJ">
+          </div>
+          <div class="informacoes">
+            <h2><b>Globo RJ</b></h2>
+            <p><b>Canais Abertos</b></p>
+            <a href="canais-3/globo-rj-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/globo-rj" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+    
+              <div class="canal">
+          <div class="imagem">
+            <img src="logos/rede-globo.png" title="Globo SP" alt="Globo SP">
+          </div>
+          <div class="informacoes">
+            <h2><b>Globo SP</b></h2>
+            <p><b>Canais Abertos</b></p>
+            <a href="canais-3/globo-sp-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/globo-sp" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+    
+              <div class="canal">
+          <div class="imagem">
+            <img src="logos/rede-globo.png" title="Globo Minas" alt="Globo Minas">
+          </div>
+          <div class="informacoes">
+            <h2><b>Globo Minas</b></h2>
+            <p><b>Canais Abertos</b></p>
+            <a href="canais-3/globo-minas-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/globo-belo-horizonte" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
 
-</section>
-<div class="col-lg-4 col-xs-12 p-0">
-<section class="search-channel">
-<div class="input-group">
-<input type="text" class="form-control rounded-0 search-channel-input" placeholder="Buscar Canal">
-</div>
-</section>
-<section class="list-channels overflow-auto">
-<div class="channel">
-<a href="/canais-3/globo-rj-ao-vivo.html" target="Player">
-<div class="number"><b>01</b></div>
-<div class="logo">
-<img src="/logos/rede-globo.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Globo RJ</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/globo-sp-ao-vivo.html" target="Player">
-<div class="number"><b>02</b></div>
-<div class="logo">
-<img src="/logos/rede-globo.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Globo SP</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/globo-minas-ao-vivo.html" target="Player">
-<div class="number"><b>03</b></div>
-<div class="logo">
-<img src="/logos/rede-globo.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Globo Minas</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/globo-tv-bahia-ao-vivo.html" target="Player">
-<div class="number"><b>04</b></div>
-<div class="logo">
-<img src="/logos/rede-globo.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Globo TV Bahia</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/sbt-ao-vivo.html" target="Player">
-<div class="number"><b>05</b></div>
-<div class="logo">
-<img src="/logos/sbt.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>SBT</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/band-ao-vivo.html" target="Player">
-<div class="number"><b>06</b></div>
-<div class="logo">
-<img src="/logos/band.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Band</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/record-tv-ao-vivo.html" target="Player">
-<div class="number"><b>07</b></div>
-<div class="logo">
-<img src="/logos/record-tv.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Record TV</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/record-tv-sp-ao-vivo.html" target="Player">
-<div class="number"><b>08</b></div>
-<div class="logo">
-<img src="/logos/record-tv.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Record TV SP</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/record-tv-minas-ao-vivo.html" target="Player">
-<div class="number"><b>09</b></div>
-<div class="logo">
-<img src="/logos/record-tv.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Record TV Minas</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/record-tv-brasilia-ao-vivo.html" target="Player">
-<div class="number"><b>10</b></div>
-<div class="logo">
-<img src="/logos/record-tv.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Record TV Bras&iacute;lia</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/record-tv-itapoan-ao-vivo.html" target="Player">
-<div class="number"><b>11</b></div>
-<div class="logo">
-<img src="/logos/record-tv.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Record TV Itapoan</b></span>
-</div>
-</a>
-</div>	
-<div class="channel">
-<a href="/canais-3/rede-tv-ao-vivo.html" target="Player">
-<div class="number"><b>12</b></div>
-<div class="logo">
-<img src="/logos/rede-tv.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Rede TV!</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/tv-cultura-ao-vivo.html" target="Player">
-<div class="number"><b>13</b></div>
-<div class="logo">
-<img src="/logos/tv-cultura.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>TV Cultura</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/tv-brasil-ao-vivo.html" target="Player">
-<div class="number"><b>14</b></div>
-<div class="logo">
-<img src="/logos/tv-brasil.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>TV Brasil</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/tve-ao-vivo.html" target="Player">
-<div class="number"><b>15</b></div>
-<div class="logo">
-<img src="/logos/tve.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>TVE</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/viva-ao-vivo.html" target="Player">
-<div class="number"><b>16</b></div>
-<div class="logo">
-<img src="/logos/viva.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Viva</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/multishow-ao-vivo.html" target="Player">
-<div class="number"><b>17</b></div>
-<div class="logo">
-<img src="/logos/multishow.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Multishow</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/gnt-ao-vivo.html" target="Player">
-<div class="number"><b>18</b></div>
-<div class="logo">
-<img src="/logos/gnt.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>GNT</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/mtv-ao-vivo.html" target="Player">
-<div class="number"><b>19</b></div>
-<div class="logo">
-<img src="/logos/mtv.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>MTV</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/mtv-live-ao-vivo.html" target="Player">
-<div class="number"><b>20</b></div>
-<div class="logo">
-<img src="/logos/mtv-live.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>MTV Live</b></span>
-</div>
-</a>
-</div>	
-<div class="channel">
-<a href="/canais-3/bis-ao-vivo.html" target="Player">
-<div class="number"><b>21</b></div>
-<div class="logo">
-<img src="/logos/bis.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>BIS</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/e-entertainment-television-ao-vivo.html" target="Player">
-<div class="number"><b>22</b></div>
-<div class="logo">
-<img src="/logos/e-entertainment-television.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>E! Entertainment Television</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/lifetime-ao-vivo.html" target="Player">
-<div class="number"><b>23</b></div>
-<div class="logo">
-<img src="/logos/lifetime.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Lifetime</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/food-network-ao-vivo.html" target="Player">
-<div class="number"><b>24</b></div>
-<div class="logo">
-<img src="/logos/food-network.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Food Network</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/tlc-discovery-ao-vivo.html" target="Player">
-<div class="number"><b>25</b></div>
-<div class="logo">
-<img src="/logos/tlc-discovery.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>TLC Discovery</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/curta-ao-vivo.html" target="Player">
-<div class="number"><b>26</b></div>
-<div class="logo">
-<img src="/logos/curta.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Curta!</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/arte-1-ao-vivo.html" target="Player">
-<div class="number"><b>27</b></div>
-<div class="logo">
-<img src="/logos/arte-1.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Arte 1</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/canal-off-ao-vivo.html" target="Player">
-<div class="number"><b>28</b></div>
-<div class="logo">
-<img src="/logos/canal-off.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Canal Off</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/prime-box-brazil-ao-vivo.html" target="Player">
-<div class="number"><b>29</b></div>
-<div class="logo">
-<img src="/logos/prime-box-brazil.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Prime Box Brazil</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/music-box-brazil-ao-vivo.html" target="Player">
-<div class="number"><b>30</b></div>
-<div class="logo">
-<img src="/logos/music-box-brazil.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Music Box Brazil</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/trace-brasil-ao-vivo.html" target="Player">
-<div class="number"><b>31</b></div>
-<div class="logo">
-<img src="/logos/trace-brasil.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Trace Brasil</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/film-arts-ao-vivo.html" target="Player">
-<div class="number"><b>32</b></div>
-<div class="logo">
-<img src="/logos/film-arts.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Film &amp; Arts</b></span>
-</div>
-</a>
-</div>	
-<div class="channel">
-<a href="/canais-3/play-tv-ao-vivo.html" target="Player">
-<div class="number"><b>33</b></div>
-<div class="logo">
-<img src="/logos/play-tv.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Play TV</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/tru-tv-ao-vivo.html" target="Player">
-<div class="number"><b>34</b></div>
-<div class="logo">
-<img src="/logos/tru-tv.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Tru TV</b></span>
-</div>
-</a>
-</div>	
-<div class="channel">
-<a href="/canais-3/woohoo-ao-vivo.html" target="Player">
-<div class="number"><b>35</b></div>
-<div class="logo">
-<img src="/logos/woohoo.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Woohoo</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/modo-viagem-ao-vivo.html" target="Player">
-<div class="number"><b>36</b></div>
-<div class="logo">
-<img src="/logos/modo-viagem.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Modo Viagem</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/comedy-central-ao-vivo.html" target="Player">
-<div class="number"><b>37</b></div>
-<div class="logo">
-<img src="/logos/comedy-central.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Comedy Central</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/star-channel-ao-vivo.html" target="Player">
-<div class="number"><b>38</b></div>
-<div class="logo">
-<img src="/logos/star-channel.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Star Channel</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/megapix-ao-vivo.html" target="Player">
-<div class="number"><b>39</b></div>
-<div class="logo">
-<img src="/logos/megapix.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Megapix</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/fx-ao-vivo.html" target="Player">
-<div class="number"><b>40</b></div>
-<div class="logo">
-<img src="/logos/fx.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>FX</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/hbo-ao-vivo.html" target="Player">
-<div class="number"><b>41</b></div>
-<div class="logo">
-<img src="/logos/hbo.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>HBO</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/hbo-2-ao-vivo.html" target="Player">
-<div class="number"><b>42</b></div>
-<div class="logo">
-<img src="/logos/hbo-2.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>HBO 2</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/hbo-plus-ao-vivo.html" target="Player">
-<div class="number"><b>43</b></div>
-<div class="logo">
-<img src="/logos/hbo-plus.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>HBO Plus</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/hbo-family-ao-vivo.html" target="Player">
-<div class="number"><b>44</b></div>
-<div class="logo">
-<img src="/logos/hbo-family.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>HBO Family</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/hbo-signature-ao-vivo.html" target="Player">
-<div class="number"><b>45</b></div>
-<div class="logo">
-<img src="/logos/hbo-signature.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>HBO Signature</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/hbo-xtreme-ao-vivo.html" target="Player">
-<div class="number"><b>46</b></div>
-<div class="logo">
-<img src="/logos/hbo-xtreme.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>HBO Xtreme</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/warner-tv-ao-vivo.html" target="Player">
-<div class="number"><b>47</b></div>
-<div class="logo">
-<img src="/logos/warner-tv.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Warner TV</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/universal-tv-ao-vivo.html" target="Player">
-<div class="number"><b>48</b></div>
-<div class="logo">
-<img src="/logos/universal-tv.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Universasl TV</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/space-ao-vivo.html" target="Player">
-<div class="number"><b>49</b></div>
-<div class="logo">
-<img src="/logos/space.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Space</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/studio-universal-ao-vivo.html" target="Player">
-<div class="number"><b>50</b></div>
-<div class="logo">
-<img src="/logos/studio-universal.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>St&uacute;dio Universal</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/sony-channel-ao-vivo.html" target="Player">
-<div class="number"><b>51</b></div>
-<div class="logo">
-<img src="/logos/sony-channel.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Sony Channel</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/sony-movies-ao-vivo.html" target="Player">
-<div class="number"><b>52</b></div>
-<div class="logo">
-<img src="/logos/sony-movies.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Sony Movies</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/cinemax-ao-vivo.html" target="Player">
-<div class="number"><b>53</b></div>
-<div class="logo">
-<img src="/logos/cinemax.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Cinemax</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/tnt-ao-vivo.html" target="Player">
-<div class="number"><b>54</b></div>
-<div class="logo">
-<img src="/logos/tnt.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>TNT</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/tnt-novelas-ao-vivo.html" target="Player">
-<div class="number"><b>55</b></div>
-<div class="logo">
-<img src="/logos/tnt-novelas.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>TNT Novelas</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/cine-canal-ao-vivo.html" target="Player">
-<div class="number"><b>56</b></div>
-<div class="logo">
-<img src="/logos/cine-canal.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Cine Canal</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/paramount-network-ao-vivo.html" target="Player">
-<div class="number"><b>57</b></div>
-<div class="logo">
-<img src="/logos/paramount-network.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Paramount Network</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/canal-brasil-ao-vivo.html" target="Player">
-<div class="number"><b>58</b></div>
-<div class="logo">
-<img src="/logos/canal-brasil.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Canal Brasil</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/telecine-premium-ao-vivo.html" target="Player">
-<div class="number"><b>59</b></div>
-<div class="logo">
-<img src="/logos/telecine-premium.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Telecine Premium</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/telecine-pipoca-ao-vivo.html" target="Player">
-<div class="number"><b>60</b></div>
-<div class="logo">
-<img src="/logos/telecine-pipoca.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Telecine Pipoca</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/telecine-action-ao-vivo.html" target="Player">
-<div class="number"><b>61</b></div>
-<div class="logo">
-<img src="/logos/telecine-action.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Telecine Action</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/telecine-touch-ao-vivo.html" target="Player">
-<div class="number"><b>62</b></div>
-<div class="logo">
-<img src="/logos/telecine-touch.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Telecine Touch</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/telecine-fun-ao-vivo.html" target="Player">
-<div class="number"><b>63</b></div>
-<div class="logo">
-<img src="/logos/telecine-fun.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Telecine Fun</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/telecine-cult-ao-vivo.html" target="Player">
-<div class="number"><b>64</b></div>
-<div class="logo">
-<img src="/logos/telecine-cult.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Telecine Cult</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/axn-ao-vivo.html" target="Player">
-<div class="number"><b>65</b></div>
-<div class="logo">
-<img src="/logos/axn.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>AXN</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/syfy-ao-vivo.html" target="Player">
-<div class="number"><b>66</b></div>
-<div class="logo">
-<img src="/logos/syfy.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Syfy</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/amc-ao-vivo.html" target="Player">
-<div class="number"><b>67</b></div>
-<div class="logo">
-<img src="/logos/amc.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>AMC</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/aie-ao-vivo.html" target="Player">
-<div class="number"><b>68</b></div>
-<div class="logo">
-<img src="/logos/aie.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>A&amp;E</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/cartoon-network-ao-vivo.html" target="Player">
-<div class="number"><b>69</b></div>
-<div class="logo">
-<img src="/logos/cartoon-network.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Cartoon Network</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/gloob-ao-vivo.html" target="Player">
-<div class="number"><b>70</b></div>
-<div class="logo">
-<img src="/logos/gloob.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Gloob</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/gloobinho-ao-vivo.html" target="Player">
-<div class="number"><b>71</b></div>
-<div class="logo">
-<img src="/logos/gloobinho.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Gloobinho</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/cartoonito-ao-vivo.html" target="Player">
-<div class="number"><b>72</b></div>
-<div class="logo">
-<img src="/logos/cartoonito.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Cartoonito</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/discovery-kids-ao-vivo.html" target="Player">
-<div class="number"><b>73</b></div>
-<div class="logo">
-<img src="/logos/discovery-kids.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Discovery Kids</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/disney-channel-ao-vivo.html" target="Player">
-<div class="number"><b>74</b></div>
-<div class="logo">
-<img src="/logos/disney-channel.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Disney Channel</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/nickelodeon-ao-vivo.html" target="Player">
-<div class="number"><b>75</b></div>
-<div class="logo">
-<img src="/logos/nickelodeon.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Nickelodeon</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/nick-jr-ao-vivo.html" target="Player">
-<div class="number"><b>76</b></div>
-<div class="logo">
-<img src="/logos/nick-jr.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Nick.Jr</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/tv-ra-tim-bum-ao-vivo.html" target="Player">
-<div class="number"><b>77</b></div>
-<div class="logo">
-<img src="/logos/tv-ra-tim-bum.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>TV R&aacute;-Tim-Bum</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/zoomoo-kids-ao-vivo.html" target="Player">
-<div class="number"><b>78</b></div>
-<div class="logo">
-<img src="/logos/zoomoo-kids.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Zoomoo Kids</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/discovery-channel-ao-vivo.html" target="Player">
-<div class="number"><b>79</b></div>
-<div class="logo">
-<img src="/logos/discovery-channel.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Discovery Channel</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/discovery-science-ao-vivo.html" target="Player">
-<div class="number"><b>80</b></div>
-<div class="logo">
-<img src="/logos/discovery-science.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Discovery Science</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/discovery-theater-ao-vivo.html" target="Player">
-<div class="number"><b>81</b></div>
-<div class="logo">
-<img src="/logos/discovery-theater.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Discovery Theater</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/discovery-world-ao-vivo.html" target="Player">
-<div class="number"><b>82</b></div>
-<div class="logo">
-<img src="/logos/discovery-world.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Discovery World</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/discovery-turbo-ao-vivo.html" target="Player">
-<div class="number"><b>83</b></div>
-<div class="logo">
-<img src="/logos/discovery-turbo.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Discovery Turbo</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/discovery-home-health-ao-vivo.html" target="Player">
-<div class="number"><b>84</b></div>
-<div class="logo">
-<img src="/logos/discovery-home-health.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Discovery Home &amp; Health</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/investigacao-discovery-ao-vivo.html" target="Player">
-<div class="number"><b>85</b></div>
-<div class="logo">
-<img src="/logos/investigacao-discovery.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Investiga&ccedil&atilde;o Discovery</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/hgtv-ao-vivo.html" target="Player">
-<div class="number"><b>86</b></div>
-<div class="logo">
-<img src="/logos/hgtv.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>HGTV</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/national-geographic-channel-ao-vivo.html" target="Player">
-<div class="number"><b>87</b></div>
-<div class="logo">
-<img src="/logos/national-geographic-channel.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>National Geographic Channel</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/animal-planet-ao-vivo.html" target="Player">
-<div class="number"><b>88</b></div>
-<div class="logo">
-<img src="/logos/animal-planet.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Animal Planet</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/history-channel-ao-vivo.html" target="Player">
-<div class="number"><b>89</b></div>
-<div class="logo">
-<img src="/logos/history-channel.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>History Channel</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/history-2-ao-vivo.html" target="Player">
-<div class="number"><b>90</b></div>
-<div class="logo">
-<img src="/logos/history-2.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>History 2</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/sportv-ao-vivo.html" target="Player">
-<div class="number"><b>91</b></div>
-<div class="logo">
-<img src="/logos/sportv.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>SporTV</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/sportv-2-ao-vivo.html" target="Player">
-<div class="number"><b>92</b></div>
-<div class="logo">
-<img src="/logos/sportv-2.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>SporTV 2</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/sportv-3-ao-vivo.html" target="Player">
-<div class="number"><b>94</b></div>
-<div class="logo">
-<img src="/logos/sportv-3.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>SporTV 3</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/espn-ao-vivo.html" target="Player">
-<div class="number"><b>95</b></div>
-<div class="logo">
-<img src="/logos/espn.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>ESPN</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/espn-2-ao-vivo.html" target="Player">
-<div class="number"><b>96</b></div>
-<div class="logo">
-<img src="/logos/espn-2.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>ESPN 2</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/espn-3-ao-vivo.html" target="Player">
-<div class="number"><b>97</b></div>
-<div class="logo">
-<img src="/logos/espn-3.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>ESPN 3</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/espn-4-ao-vivo.html" target="Player">
-<div class="number"><b>98</b></div>
-<div class="logo">
-<img src="/logos/espn-4.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>ESPN 4</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/espn-extra-ao-vivo.html" target="Player">
-<div class="number"><b>99</b></div>
-<div class="logo">
-<img src="/logos/espn-extra.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>ESPN Extra</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/tnt-sports-ao-vivo.html" target="Player">
-<div class="number"><b>100</b></div>
-<div class="logo">
-<img src="/logos/tnt-sports.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>TNT Sports</b></span>
-</div>
-</a>
-</div>	
-<div class="channel">
-<a href="/canais-3/band-sports-ao-vivo.html" target="Player">
-<div class="number"><b>101</b></div>
-<div class="logo">
-<img src="/logos/band-sports.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Band Sports</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/fox-sports-2-ao-vivo.html" target="Player">
-<div class="number"><b>102</b></div>
-<div class="logo">
-<img src="/logos/fox-sports-2.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>FOX Sports 2</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/combate-ao-vivo.html" target="Player">
-<div class="number"><b>103</b></div>
-<div class="logo">
-<img src="/logos/combate.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Combate</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/premiere-clubes-ao-vivo.html" target="Player">
-<div class="number"><b>104</b></div>
-<div class="logo">
-<img src="/logos/premiere-clubes.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Premiere Clubes</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/globo-news-ao-vivo.html" target="Player">
-<div class="number"><b>105</b></div>
-<div class="logo">
-<img src="/logos/globo-news.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Globo News</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/band-news-ao-vivo.html" target="Player">
-<div class="number"><b>106</b></div>
-<div class="logo">
-<img src="/logos/band-news.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Band News</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/record-news-ao-vivo.html" target="Player">
-<div class="number"><b>107</b></div>
-<div class="logo">
-<img src="/logos/record-news.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Record News</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/cnn-brasil-ao-vivo.html" target="Player">
-<div class="number"><b>108</b></div>
-<div class="logo">
-<img src="/logos/cnn-brasil.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>CNN Brasil</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/jovem-pan-news-ao-vivo.html" target="Player">
-<div class="number"><b>109</b></div>
-<div class="logo">
-<img src="/logos/jovem-pan-news.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Jovem Pan News</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/claro-tv-ao-vivo.html" target="Player">
-<div class="number"><b>110</b></div>
-<div class="logo">
-<img src="/logos/claro-tv.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Claro TV</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/like-ao-vivo.html" target="Player">
-<div class="number"><b>111</b></div>
-<div class="logo">
-<img src="/logos/like.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Like</b></span>
-</div>
-</a>
-</div>
-<div class="channel">
-<a href="/canais-3/eurochannel-ao-vivo.html" target="Player">
-<div class="number"><b>112</b></div>
-<div class="logo">
-<img src="/logos/eurochannel.png" alt>
-</div>
-<div class="name">
-<span class="badge badge-info mb-1 d-none"></span>
-<span><b>Eurochannel</b></span>
-</div>
-</a>
-</div>
-</section>
-</div>
-</div>
-</div>
-</section>
-</div>
-</div>
-</div>
-</section>
-<footer>
-<div class="container d-flex justify-content-center">
-<div class="col-xs-12 col-sm-12 col-md-10 mt-3 d-flex justify-content-center">
-<p><b>© 2023 Mega TV Online: Canais de TV Full HD Online! E o melhor, é de Graça!. Todos os Direitos do
-Código do Site Reservados!</b>
-</p>
-</div>
-</div>
-</footer>
-<script>
-        //Loop through elements .channel to add a counter to each .number element
-        //The counter needs to be 3 digits long, so we add a 0 to the left if the number is less than 10
-        // var channel = document.querySelectorAll('.channel');
-        // for (var i = 0; i < channel.length; i++) {
-        //     var number = channel[i].querySelector('.number');
-        //     var numberValue = i + 1;
-        //     if (numberValue < 10) {
-        //         number.innerHTML = '00' + numberValue;
-        //     } else if (numberValue < 100) {
-        //         number.innerHTML = '0' + numberValue;
-        //     }
-        // }
+               <div class="canal">
+          <div class="imagem">
+            <img src="logos/rede-globo.png" title="Globo Nordeste" alt="Globo Nordeste">
+          </div>
+          <div class="informacoes">
+            <h2><b>Globo Nordeste</b></h2>
+            <p><b>Canais Abertos</b></p>
+            <a href="canais-3/globo-nordeste-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/globo-nordeste-hd" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
 
-        //Filter .channels and .number by search-channel input
-        var searchChannel = document.querySelector('.search-channel-input');
-        searchChannel.addEventListener('input', function () {
-            var filter = searchChannel.value.toUpperCase();
-            var channel = document.querySelectorAll('.channel');
-            var number = document.querySelectorAll('.number');
-            for (var i = 0; i < channel.length; i++) {
-                var channelName = channel[i].querySelector('.channel .name span:nth-child(2)');
-                var channelNameValue = channelName.innerHTML.toUpperCase();
-                //check if contains number inside number variable
-                var numberExists = number[i].innerHTML.indexOf(filter) > -1;
+               <div class="canal">
+          <div class="imagem">
+            <img src="logos/rede-globo.png" title="Globo Brasília" alt="Globo Brasília">
+          </div>
+          <div class="informacoes">
+            <h2><b>Globo Brasília</b></h2>
+            <p><b>Canais Abertos</b></p>
+            <a href="canais-3/globo-brasilia-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/globo-brasilia" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
 
-                if (channelNameValue.indexOf(filter) > -1 || numberExists) {
-                    channel[i].style.display = '';
-                } else {
-                    channel[i].style.display = 'none';
-                }
-            }
-        });
+               <div class="canal">
+          <div class="imagem">
+            <img src="logos/rede-globo.png" title="Globo TV Bahia" alt="Globo TV Bahia">
+          </div>
+          <div class="informacoes">
+            <h2><b>Globo TV Bahia</b></h2>
+            <p><b>Canais Abertos</b></p>
+            <a href="canais-3/globo-tv-bahia-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/globo-tv-bahia" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+    
+              <div class="canal">
+          <div class="imagem">
+            <img src="logos/sbt.png" title="SBT" alt="SBT">
+          </div>
+          <div class="informacoes">
+            <h2><b>SBT</b></h2>
+            <p><b>Canais Abertos</b></p>
+            <a href="canais-3/sbt-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/sbt" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+    
+              <div class="canal">
+          <div class="imagem">
+            <img src="logos/band.png" title="Band" alt="Band">
+          </div>
+          <div class="informacoes">
+            <h2><b>Band</b></h2>
+            <p><b>Canais Abertos</b></p>
+            <a href="canais-3/band-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/band" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+    
+              <div class="canal">
+          <div class="imagem">
+            <img src="logos/record-tv.png" title="Record TV SP" alt="Record TV SP">
+          </div>
+          <div class="informacoes">
+            <h2><b>Record TV SP</b></h2>
+            <p><b>Canais Abertos</b></p>
+            <a href="canais-3/record-tv-sp-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/record" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+    
+              <div class="canal">
+          <div class="imagem">
+            <img src="logos/rede-tv.png" title="Rede TV!" alt="Rede TV!">
+          </div>
+          <div class="informacoes">
+            <h2><b>Rede TV!</b></h2>
+            <p><b>Canais Abertos</b></p>
+            <a href="canais-3/rede-tv-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/rede-tv" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
 
-        if(window.location.href.indexOf(".html") > -1){
-             //Scroll just a.active inside .list-channel to the top of the .list-channel and not scroll the window
-            var listChannel = document.querySelector('.list-channels');
-            var active = document.querySelector('.channel a.active');
-            listChannel.scrollTop = active.offsetTop - listChannel.offsetTop;
-        }
+              <div class="canal">
+          <div class="imagem">
+            <img src="logos/tv-cultura.png" title="TV Cultura" alt="TV Cultura">
+          </div>
+          <div class="informacoes">
+            <h2><b>TV Cultura</b></h2>
+            <p><b>Canais Abertos</b></p>
+            <a href="canais-3/tv-cultura-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/cultura" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
 
-        //when click on .options remove .active and add .active to the clicked element
-        var options = document.querySelectorAll('.options');
-            for (var i = 0; i < options.length; i++) {
-                options[i].addEventListener('click', function () {
-                    var active = document.querySelector('.options.active');
-                    active.classList.remove('active');
-                    this.classList.add('active');
-                });
-            }
+             <div class="canal">
+          <div class="imagem">
+            <img src="logos/tv-brasil.png" title="TV Brasil" alt="TV Brasil">
+          </div>
+          <div class="informacoes">
+            <h2><b>TV Brasil</b></h2>
+            <p><b>Canais Abertos</b></p>
+            <a href="canais-3/tv-brasil-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/tv-brasil" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
 
-       
+             <div class="canal">
+          <div class="imagem">
+            <img src="logos/viva.png" title="Viva" alt="Viva">
+          </div>
+          <div class="informacoes">
+            <h2><b>Viva</b></h2>
+            <p><b>Músicas & Variedades</b></p>
+            <a href="canais-3/viva-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/viva" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+            
+             <div class="canal">
+          <div class="imagem">
+            <img src="logos/multishow.png" title="Multishow" alt="Multishow">
+          </div>
+          <div class="informacoes">
+            <h2><b>Multishow</b></h2>
+            <p><b>Músicas & Variedades</b></p>
+            <a href="canais-3/multishow-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/multishow" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
 
-    </script>
+            <div class="canal">
+          <div class="imagem">
+            <img src="logos/gnt.png" title="GNT" alt="GNT">
+          </div>
+          <div class="informacoes">
+            <h2><b>GNT</b></h2>
+            <p><b>Músicas & Variedades</b></p>
+            <a href="canais-3/gnt-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/gnt" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+              <div class="canal">
+          <div class="imagem">
+            <img src="logos/mtv.png" title="MTV" alt="MTV">
+          </div>
+          <div class="informacoes">
+            <h2><b>MTV</b></h2>
+            <p><b>Músicas & Variedades</b></p>
+            <a href="canais-3/mtv-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/mtv" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+            <div class="canal">
+          <div class="imagem">
+            <img src="logos/bis.png" title="BIS" alt="BIS">
+          </div>
+          <div class="informacoes">
+            <h2><b>BIS</b></h2>
+            <p><b>Músicas & Variedades</b></p>
+            <a href="canais-3/bis-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/bis" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+             <div class="canal">
+          <div class="imagem">
+            <img src="logos/e-entertainment-television.png" title="E! Entertainment Television" alt="E! Entertainment Television">
+          </div>
+          <div class="informacoes">
+            <h2><b>E! Entertainment</b></h2>
+            <p><b>Músicas & Variedades</b></p>
+            <a href="canais-3/e-entertainment-television-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="#" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+            <div class="canal">
+          <div class="imagem">
+            <img src="logos/lifetime.png" title="Lifetime" alt="Lifetime">
+          </div>
+          <div class="informacoes">
+            <h2><b>Lifetime</b></h2>
+            <p><b>Músicas & Variedades</b></p>
+            <a href="canais-3/lifetime-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/lifetime-hd" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+            <div class="canal">
+          <div class="imagem">
+            <img src="logos/food-network.png" title="Food Network" alt="Food Network">
+          </div>
+          <div class="informacoes">
+            <h2><b>Food Network</b></h2>
+            <p><b>Músicas & Variedades</b></p>
+            <a href="canais-3/food-network-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/food-network" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+            <div class="canal">
+          <div class="imagem">
+            <img src="logos/tlc-discovery.png" title="TLC Discovery" alt="TLC Discovery">
+          </div>
+          <div class="informacoes">
+            <h2><b>TLC Discovery</b></h2>
+            <p><b>Músicas & Variedades</b></p>
+            <a href="canais-3/tlc-discovery-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/tlc" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+             <div class="canal">
+          <div class="imagem">
+            <img src="logos/curta.png" title="Curta!" alt="Curta!">
+          </div>
+          <div class="informacoes">
+            <h2><b>Curta!</b></h2>
+            <p><b>Músicas & Variedades</b></p>
+            <a href="canais-3/curta-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/curta" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+            <div class="canal">
+          <div class="imagem">
+            <img src="logos/arte-1.png" title="Arte 1" alt="Arte 1">
+          </div>
+          <div class="informacoes">
+            <h2><b>Arte 1</b></h2>
+            <p><b>Músicas & Variedades</b></p>
+            <a href="canais-3/arte-1-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/arte-1" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+                <div class="canal">
+          <div class="imagem">
+            <img src="logos/canal-off.png" title="Canal Off" alt="Canal Off">
+          </div>
+          <div class="informacoes">
+            <h2><b>Canal Off</b></h2>
+            <p><b>Músicas & Variedades</b></p>
+            <a href="canais-3/canal-off-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/off" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+                <div class="canal">
+          <div class="imagem">
+            <img src="logos/tru-tv.png" title="Tru TV" alt="Tru TV">
+          </div>
+          <div class="informacoes">
+            <h2><b>Tru TV</b></h2>
+            <p><b>Músicas & Variedades</b></p>
+            <a href="canais-3/tru-tv-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/trutv" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+              <div class="canal">
+          <div class="imagem">
+            <img src="logos/modo-viagem.png" title="Modo Viagem" alt="Modo Viagem">
+          </div>
+          <div class="informacoes">
+            <h2><b>Modo Viagem</b></h2>
+            <p><b>Músicas & Variedades</b></p>
+            <a href="canais-3/modo-viagem-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="#" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+             <div class="canal">
+          <div class="imagem">
+            <img src="logos/comedy-central.png" title="Comedy Central" alt="Comedy Central">
+          </div>
+          <div class="informacoes">
+            <h2><b>Comedy Central</b></h2>
+            <p><b>Músicas & Variedades</b></p>
+            <a href="canais-3/comedy-central-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/comedy-central" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+
+            <div class="canal">
+          <div class="imagem">
+            <img src="logos/star-channel.png" title="Star Channel" alt="Star Channel">
+          </div>
+          <div class="informacoes">
+            <h2><b>Star Channel</b></h2>
+            <p><b>Filmes & Séries</b></p>
+            <a href="canais-3/star-channel-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/fox" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+              <div class="canal">
+          <div class="imagem">
+            <img src="logos/megapix.png" title="Megapix" alt="Megapix">
+          </div>
+          <div class="informacoes">
+            <h2><b>Megapix</b></h2>
+            <p><b>Filmes & Séries</b></p>
+            <a href="canais-3/megapix-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/megapix" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+             <div class="canal">
+          <div class="imagem">
+            <img src="logos/fx.png" title="FX" alt="FX">
+          </div>
+          <div class="informacoes">
+            <h2><b>FX</b></h2>
+            <p><b>Filmes & Séries</b></p>
+            <a href="canais-3/fx-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/fx" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+             <div class="canal">
+          <div class="imagem">
+            <img src="logos/hbo.png" title="HBO" alt="HBO">
+          </div>
+          <div class="informacoes">
+            <h2><b>HBO</b></h2>
+            <p><b>Filmes & Séries</b></p>
+            <a href="canais-3/hbo-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/hbo" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+             <div class="canal">
+          <div class="imagem">
+            <img src="logos/hbo-2.png" title="HBO 2" alt="HBO 2">
+          </div>
+          <div class="informacoes">
+            <h2><b>HBO 2</b></h2>
+            <p><b>Filmes & Séries</b></p>
+            <a href="canais-3/hbo-2-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/hbo-2" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+             <div class="canal">
+          <div class="imagem">
+            <img src="logos/hbo-plus.png" title="HBO Plus" alt="HBO Plus">
+          </div>
+          <div class="informacoes">
+            <h2><b>HBO Plus</b></h2>
+            <p><b>Filmes & Séries</b></p>
+            <a href="canais-3/hbo-plus-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/hbo-plus" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+             <div class="canal">
+          <div class="imagem">
+            <img src="logos/hbo-family.png" title="HBO Family" alt="HBO Family">
+          </div>
+          <div class="informacoes">
+            <h2><b>HBO Family</b></h2>
+            <p><b>Filmes & Séries</b></p>
+            <a href="canais-3/hbo-family-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/hbo-family" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+             <div class="canal">
+          <div class="imagem">
+            <img src="logos/hbo-signature.png" title="HBO Signature" alt="HBO Signature">
+          </div>
+          <div class="informacoes">
+            <h2><b>HBO Signature</b></h2>
+            <p><b>Filmes & Séries</b></p>
+            <a href="canais-3/hbo-signature-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/hbo-signature" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+             <div class="canal">
+          <div class="imagem">
+            <img src="logos/hbo-xtreme.png" title="HBO Xtreme" alt="HBO Xtreme">
+          </div>
+          <div class="informacoes">
+            <h2><b>HBO Xtreme</b></h2>
+            <p><b>Filmes & Séries</b></p>
+            <a href="canais-3/hbo-xtreme-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="#" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+             <div class="canal">
+          <div class="imagem">
+            <img src="logos/hbo-mundi.png" title="HBO Mundi" alt="HBO Mundi">
+          </div>
+          <div class="informacoes">
+            <h2><b>HBO Mundi</b></h2>
+            <p><b>Filmes & Séries</b></p>
+            <a href="canais-3/hbo-mundi-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="#" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+             <div class="canal">
+          <div class="imagem">
+            <img src="logos/hbo-pop.png" title="HBO Pop" alt="HBO Pop">
+          </div>
+          <div class="informacoes">
+            <h2><b>HBO Pop</b></h2>
+            <p><b>Filmes & Séries</b></p>
+            <a href="canais-3/hbo-pop-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="#" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+            <div class="canal">
+          <div class="imagem">
+            <img src="logos/warner-tv.png" title="Warner TV" alt="Warner TV">
+          </div>
+          <div class="informacoes">
+            <h2><b>Warner TV</b></h2>
+            <p><b>Filmes & Séries</b></p>
+            <a href="canais-3/warner-tv-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/warner-channel" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+            <div class="canal">
+          <div class="imagem">
+            <img src="logos/universal-tv.png" title="Universal TV" alt="Universal TV">
+          </div>
+          <div class="informacoes">
+            <h2><b>Universal TV</b></h2>
+            <p><b>Filmes & Séries</b></p>
+            <a href="canais-3/universal-tv-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/universal" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+            <div class="canal">
+          <div class="imagem">
+            <img src="logos/space.png" title="Space" alt="Space">
+          </div>
+          <div class="informacoes">
+            <h2><b>Space</b></h2>
+            <p><b>Filmes & Séries</b></p>
+            <a href="canais-3/space-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/space" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+             <div class="canal">
+          <div class="imagem">
+            <img src="logos/studio-universal.png" title="Stúdio Universal" alt="Stúdio Universal">
+          </div>
+          <div class="informacoes">
+            <h2><b>Stúdio Universal</b></h2>
+            <p><b>Filmes & Séries</b></p>
+            <a href="canais-3/studio-universal-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/studio-universal" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+            <div class="canal">
+          <div class="imagem">
+            <img src="logos/sony-channel.png" title="Sony Channel" alt="Sony Channel">
+          </div>
+          <div class="informacoes">
+            <h2><b>Sony Channel</b></h2>
+            <p><b>Filmes & Séries</b></p>
+            <a href="canais-3/sony-channel-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/sony" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+            <div class="canal">
+          <div class="imagem">
+            <img src="logos/sony-movies.png" title="Sony Movies" alt="Sony Movies">
+          </div>
+          <div class="informacoes">
+            <h2><b>Sony Movies</b></h2>
+            <p><b>Filmes & Séries</b></p>
+            <a href="canais-3/sony-movies-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="#" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+            <div class="canal">
+          <div class="imagem">
+            <img src="logos/cinemax.png" title="Cinemax" alt="Cinemax">
+          </div>
+          <div class="informacoes">
+            <h2><b>Cinemax</b></h2>
+            <p><b>Filmes & Séries</b></p>
+            <a href="canais-3/cinemax-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/cinemax" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+             <div class="canal">
+          <div class="imagem">
+            <img src="logos/tnt.png" title="TNT" alt="TNT">
+          </div>
+          <div class="informacoes">
+            <h2><b>TNT</b></h2>
+            <p><b>Filmes & Séries</b></p>
+            <a href="canais-3/tnt-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/tnt" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+            <div class="canal">
+          <div class="imagem">
+            <img src="logos/tnt-novelas.png" title="TNT Novelas" alt="TNT Novelas">
+          </div>
+          <div class="informacoes">
+            <h2><b>TNT Novelas</b></h2>
+            <p><b>Filmes & Séries</b></p>
+            <a href="canais-3/tnt-novelas-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="#" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+             <div class="canal">
+          <div class="imagem">
+            <img src="logos/cine-canal.png" title="Cine Canal" alt="Cine Canal">
+          </div>
+          <div class="informacoes">
+            <h2><b>Cine Canal</b></h2>
+            <p><b>Filmes & Séries</b></p>
+            <a href="canais-3/cine-canal-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="#" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+            <div class="canal">
+          <div class="imagem">
+            <img src="logos/paramount-network.png" title="Paramount Network" alt="Paramount Network">
+          </div>
+          <div class="informacoes">
+            <h2><b>Paramount Net</b></h2>
+            <p><b>Filmes & Séries</b></p>
+            <a href="canais-3/paramount-network-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/paramount-channel" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+             <div class="canal">
+          <div class="imagem">
+            <img src="logos/canal-brasil.png" title="Canal Brasil" alt="Canal Brasil">
+          </div>
+          <div class="informacoes">
+            <h2><b>Canal Brasil</b></h2>
+            <p><b>Filmes & Séries</b></p>
+            <a href="canais-3/canal-brasil-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/canal-brasil" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+                 <div class="canal">
+          <div class="imagem">
+            <img src="logos/telecine-premium.png" title="Telecine Premium" alt="Telecine Premium">
+          </div>
+          <div class="informacoes">
+            <h2><b>Telecine Premium</b></h2>
+            <p><b>Filmes & Séries</b></p>
+            <a href="canais-3/telecine-premium-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/telecine-premium" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+                 <div class="canal">
+          <div class="imagem">
+            <img src="logos/telecine-pipoca.png" title="Telecine Pipoca" alt="Telecine Pipoca">
+          </div>
+          <div class="informacoes">
+            <h2><b>Telecine Pipoca</b></h2>
+            <p><b>Filmes & Séries</b></p>
+            <a href="canais-3/telecine-pipoca-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/telecine-pipoca" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+                <div class="canal">
+          <div class="imagem">
+            <img src="logos/telecine-action.png" title="Telecine Action" alt="Telecine Action">
+          </div>
+          <div class="informacoes">
+            <h2><b>Telecine Action</b></h2>
+            <p><b>Filmes & Séries</b></p>
+            <a href="canais-3/telecine-action-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/telecine-action" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+               <div class="canal">
+          <div class="imagem">
+            <img src="logos/telecine-touch.png" title="Telecine Touch" alt="Telecine Touch">
+          </div>
+          <div class="informacoes">
+            <h2><b>Telecine Touch</b></h2>
+            <p><b>Filmes & Séries</b></p>
+            <a href="canais-3/telecine-touch-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/telecine-touch" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+              <div class="canal">
+          <div class="imagem">
+            <img src="logos/telecine-fun.png" title="Telecine Fun" alt="Telecine Fun">
+          </div>
+          <div class="informacoes">
+            <h2><b>Telecine Fun</b></h2>
+            <p><b>Filmes & Séries</b></p>
+            <a href="canais-3/telecine-fun-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/telecine-fun" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+             <div class="canal">
+          <div class="imagem">
+            <img src="logos/telecine-cult.png" title="Telecine Cult" alt="Telecine Cult">
+          </div>
+          <div class="informacoes">
+            <h2><b>Telecine Cult</b></h2>
+            <p><b>Filmes & Séries</b></p>
+            <a href="canais-3/telecine-cult-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/telecine-cult" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+              <div class="canal">
+          <div class="imagem">
+            <img src="logos/axn.png" title="AXN" alt="AXN">
+          </div>
+          <div class="informacoes">
+            <h2><b>AXN</b></h2>
+            <p><b>Filmes & Séries</b></p>
+            <a href="canais-3/axn-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/axn" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+             <div class="canal">
+          <div class="imagem">
+            <img src="logos/syfy.png" title="Syfy" alt="Syfy">
+          </div>
+          <div class="informacoes">
+            <h2><b>Syfy</b></h2>
+            <p><b>Filmes & Séries</b></p>
+            <a href="canais-3/syfy-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/syfy" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+              <div class="canal">
+          <div class="imagem">
+            <img src="logos/amc.png" title="AMC" alt="AMC">
+          </div>
+          <div class="informacoes">
+            <h2><b>AMC</b></h2>
+            <p><b>Filmes & Séries</b></p>
+            <a href="canais-3/amc-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/amc-brasil" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+             <div class="canal">
+          <div class="imagem">
+            <img src="logos/aie.png" title="A&E" alt="A&E">
+          </div>
+          <div class="informacoes">
+            <h2><b>A&E</b></h2>
+            <p><b>Filmes & Séries</b></p>
+            <a href="canais-3/aie-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/a-e" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+             <div class="canal">
+          <div class="imagem">
+            <img src="logos/cartoon-network.png" title="Cartoon Network" alt="Cartoon Network">
+          </div>
+          <div class="informacoes">
+            <h2><b>Cartoon Network</b></h2>
+            <p><b>Infantil</b></p>
+            <a href="canais-3/cartoon-network-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/cartoon" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+            <div class="canal">
+          <div class="imagem">
+            <img src="logos/gloob.png" title="Gloob" alt="Gloob">
+          </div>
+          <div class="informacoes">
+            <h2><b>Gloob</b></h2>
+            <p><b>Infantil</b></p>
+            <a href="canais-3/gloob-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/gloob" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+             <div class="canal">
+          <div class="imagem">
+            <img src="logos/gloobinho.png" title="Gloobinho" alt="Gloobinho">
+          </div>
+          <div class="informacoes">
+            <h2><b>Gloobinho</b></h2>
+            <p><b>Infantil</b></p>
+            <a href="canais-3/gloobinho-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/gloobinho" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+               <div class="canal">
+          <div class="imagem">
+            <img src="logos/cartoonito.png" title="Cartoonito" alt="Cartoonito">
+          </div>
+          <div class="informacoes">
+            <h2><b>Cartoonito</b></h2>
+            <p><b>Infantil</b></p>
+            <a href="canais-3/cartoonito-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/boomerang" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+              <div class="canal">
+          <div class="imagem">
+            <img src="logos/tooncast.png" title="Tooncast" alt="Tooncast">
+          </div>
+          <div class="informacoes">
+            <h2><b>Tooncast</b></h2>
+            <p><b>Infantil</b></p>
+            <a href="canais-3/tooncast-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/tooncast" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+             <div class="canal">
+          <div class="imagem">
+            <img src="logos/discovery-kids.png" title="Discovery Kids" alt="Discovery Kids">
+          </div>
+          <div class="informacoes">
+            <h2><b>Discovery Kids</b></h2>
+            <p><b>Infantil</b></p>
+            <a href="canais-3/discovery-kids-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/discovery-kids" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+             <div class="canal">
+          <div class="imagem">
+            <img src="logos/disney-channel.png" title="Disney Channel" alt="Disney Channel">
+          </div>
+          <div class="informacoes">
+            <h2><b>Disney Channel</b></h2>
+            <p><b>Infantil</b></p>
+            <a href="canais-3/disney-channel-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/disney" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+            <div class="canal">
+          <div class="imagem">
+            <img src="logos/nickelodeon.png" title="Nickelodeon" alt="Nickelodeon">
+          </div>
+          <div class="informacoes">
+            <h2><b>Nickelodeon</b></h2>
+            <p><b>Infantil</b></p>
+            <a href="canais-3/nickelodeon-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/nickelodeon" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+            <div class="canal">
+          <div class="imagem">
+            <img src="logos/nick-jr.png" title="Nick Jr." alt="Nick Jr.">
+          </div>
+          <div class="informacoes">
+            <h2><b>Nick Jr.</b></h2>
+            <p><b>Infantil</b></p>
+            <a href="canais-3/nick-jr-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/nick-jr" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+            <div class="canal">
+          <div class="imagem">
+            <img src="logos/tv-ra-tim-bum.png" title="TV Rá-Tim-Bum" alt="TV Rá-Tim-Bum">
+          </div>
+          <div class="informacoes">
+            <h2><b>TV Rá-Tim-Bum</b></h2>
+            <p><b>Infantil</b></p>
+            <a href="canais-3/tv-ra-tim-bum-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/ra-tim-bum" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+             <div class="canal">
+          <div class="imagem">
+            <img src="logos/zoomoo-kids.png" title="Zoomoo Kids" alt="Zoomoo Kids">
+          </div>
+          <div class="informacoes">
+            <h2><b>Zoomoo Kids</b></h2>
+            <p><b>Infantil</b></p>
+            <a href="canais-3/zoomoo-kids-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/zoomoo" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+            <div class="canal">
+          <div class="imagem">
+            <img src="logos/discovery-channel.png" title="Discovery Channel" alt="Discovery Channel">
+          </div>
+          <div class="informacoes">
+            <h2><b>Discovery Channel</b></h2>
+            <p><b>Documentários</b></p>
+            <a href="canais-3/discovery-channel-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/discovery" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+            <div class="canal">
+          <div class="imagem">
+            <img src="logos/discovery-science.png" title="Discovery Science" alt="Discovery Science">
+          </div>
+          <div class="informacoes">
+            <h2><b>Discovery Science</b></h2>
+            <p><b>Documentários</b></p>
+            <a href="canais-3/discovery-science-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/discovery-science" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+            <div class="canal">
+          <div class="imagem">
+            <img src="logos/discovery-theater.png" title="Discovery Theater" alt="Discovery Theater">
+          </div>
+          <div class="informacoes">
+            <h2><b>Discovery Theater</b></h2>
+            <p><b>Documentários</b></p>
+            <a href="canais-3/discovery-theater-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/discovery-theater-hd" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+            <div class="canal">
+          <div class="imagem">
+            <img src="logos/discovery-world.png" title="Discovery World" alt="Discovery World">
+          </div>
+          <div class="informacoes">
+            <h2><b>Discovery World</b></h2>
+            <p><b>Documentários</b></p>
+            <a href="canais-3/discovery-world-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/discovery-world-hd" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+             <div class="canal">
+          <div class="imagem">
+            <img src="logos/discovery-turbo.png" title="Discovery Turbo" alt="Discovery Turbo">
+          </div>
+          <div class="informacoes">
+            <h2><b>Discovery Turbo</b></h2>
+            <p><b>Documentários</b></p>
+            <a href="canais-3/discovery-turbo-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/discovery-turbo" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+            <div class="canal">
+          <div class="imagem">
+            <img src="logos/discovery-home-health.png" title="Discovery Home & Health" alt="Discovery Home & Health">
+          </div>
+          <div class="informacoes">
+            <h2><b>Discovery H & H</b></h2>
+            <p><b>Documentários</b></p>
+            <a href="canais-3/discovery-home-health-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/discovery-home-health" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+            <div class="canal">
+          <div class="imagem">
+            <img src="logos/investigacao-discovery.png" title="Investigação Discovery" alt="Investigação Discovery">
+          </div>
+          <div class="informacoes">
+            <h2><b>Discovery ID</b></h2>
+            <p><b>Documentários</b></p>
+            <a href="canais-3/investigacao-discovery-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/investigacao-discovery" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+            <div class="canal">
+          <div class="imagem">
+            <img src="logos/hgtv.png" title="HGTV" alt="HGTV">
+          </div>
+          <div class="informacoes">
+            <h2><b>HGTV</b></h2>
+            <p><b>Documentários</b></p>
+            <a href="canais-3/hgtv-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/hgtv" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+             <div class="canal">
+          <div class="imagem">
+            <img src="logos/national-geographic-channel.png" title="National Geographic Channel" alt="National Geographic Channel">
+          </div>
+          <div class="informacoes">
+            <h2><b>Nat Geo Ch</b></h2>
+            <p><b>Documentários</b></p>
+            <a href="canais-3/national-geographic-channel-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/national-geographic" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+            <div class="canal">
+          <div class="imagem">
+            <img src="logos/animal-planet.png" title="Animal Planet" alt="Animal Planet">
+          </div>
+          <div class="informacoes">
+            <h2><b>Animal Planet</b></h2>
+            <p><b>Documentários</b></p>
+            <a href="canais-3/animal-planet-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/animal-planet" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+            <div class="canal">
+          <div class="imagem">
+            <img src="logos/history-channel.png" title="History Channel" alt="History Channel">
+          </div>
+          <div class="informacoes">
+            <h2><b>History Channel</b></h2>
+            <p><b>Documentários</b></p>
+            <a href="canais-3/history-channel-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/history-channel" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+            <div class="canal">
+          <div class="imagem">
+            <img src="logos/history-2.png" title="History 2" alt="History 2">
+          </div>
+          <div class="informacoes">
+            <h2><b>History 2</b></h2>
+            <p><b>Documentários</b></p>
+            <a href="canais-3/history-2-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/h2" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+             <div class="canal">
+          <div class="imagem">
+            <img src="logos/sportv.png" title="SporTV" alt="SporTV">
+          </div>
+          <div class="informacoes">
+            <h2><b>SporTV</b></h2>
+            <p><b>Esportes</b></p>
+            <a href="canais-3/sportv-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/sportv" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+             <div class="canal">
+          <div class="imagem">
+            <img src="logos/sportv-2.png" title="SporTV 2" alt="SporTV 2">
+          </div>
+          <div class="informacoes">
+            <h2><b>SporTV 2</b></h2>
+            <p><b>Esportes</b></p>
+            <a href="canais-3/sportv-2-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/sportv2" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+             <div class="canal">
+          <div class="imagem">
+            <img src="logos/sportv-3.png" title="SporTV 3" alt="SporTV 3">
+          </div>
+          <div class="informacoes">
+            <h2><b>SporTV 3</b></h2>
+            <p><b>Esportes</b></p>
+            <a href="canais-3/sportv-3-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/sportv3" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+            <div class="canal">
+          <div class="imagem">
+            <img src="logos/espn.png" title="ESPN" alt="ESPN">
+          </div>
+          <div class="informacoes">
+            <h2><b>ESPN</b></h2>
+            <p><b>Esportes</b></p>
+            <a href="canais-3/espn-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="#" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+             <div class="canal">
+          <div class="imagem">
+            <img src="logos/espn-2.png" title="ESPN 2" alt="ESPN 2">
+          </div>
+          <div class="informacoes">
+            <h2><b>ESPN 2</b></h2>
+            <p><b>Esportes</b></p>
+            <a href="canais-3/espn-2-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="#" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+            <div class="canal">
+          <div class="imagem">
+            <img src="logos/espn-3.png" title="ESPN 3" alt="ESPN 3">
+          </div>
+          <div class="informacoes">
+            <h2><b>ESPN 3</b></h2>
+            <p><b>Esportes</b></p>
+            <a href="canais-3/espn-3-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="#" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+             <div class="canal">
+          <div class="imagem">
+            <img src="logos/espn-4.png" title="ESPN 4" alt="ESPN 4">
+          </div>
+          <div class="informacoes">
+            <h2><b>ESPN 4</b></h2>
+            <p><b>Esportes</b></p>
+            <a href="canais-3/espn-4-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="#" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+            <div class="canal">
+          <div class="imagem">
+            <img src="logos/espn-extra.png" title="ESPN Extra" alt="ESPN Extra">
+          </div>
+          <div class="informacoes">
+            <h2><b>ESPN Extra</b></h2>
+            <p><b>Esportes</b></p>
+            <a href="canais-3/espn-extra-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="#" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+            <div class="canal">
+          <div class="imagem">
+            <img src="logos/band-sports.png" title="Band Sports" alt="Band Sports">
+          </div>
+          <div class="informacoes">
+            <h2><b>Band Sports</b></h2>
+            <p><b>Esportes</b></p>
+            <a href="canais-3/band-sports-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/bandsports" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+             <div class="canal">
+          <div class="imagem">
+            <img src="logos/fox-sports-2.png" title="FOX Sports 2" alt="FOX Sports 2">
+          </div>
+          <div class="informacoes">
+            <h2><b>FOX Sports 2</b></h2>
+            <p><b>Esportes</b></p>
+            <a href="canais-3/fox-sports-2-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/fox-sports-2" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+            <div class="canal">
+          <div class="imagem">
+            <img src="logos/combate.png" title="Combate" alt="Combate">
+          </div>
+          <div class="informacoes">
+            <h2><b>Combate</b></h2>
+            <p><b>Esportes</b></p>
+            <a href="canais-3/combate-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="#" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+             <div class="canal">
+          <div class="imagem">
+            <img src="logos/premiere-clubes.png" title="Premiere Clubes" alt="Premiere Clubes">
+          </div>
+          <div class="informacoes">
+            <h2><b>Premiere Clubes</b></h2>
+            <p><b>Esportes</b></p>
+            <a href="canais-3/premiere-clubes-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="#" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+            <div class="canal">
+          <div class="imagem">
+            <img src="logos/globo-news.png" title="Globo News" alt="Globo News">
+          </div>
+          <div class="informacoes">
+            <h2><b>Globo News</b></h2>
+            <p><b>Notícias</b></p>
+            <a href="canais-3/globo-news-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/globo-news" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+            <div class="canal">
+          <div class="imagem">
+            <img src="logos/band-news.png" title="Band News" alt="Band News">
+          </div>
+          <div class="informacoes">
+            <h2><b>Band News</b></h2>
+            <p><b>Notícias</b></p>
+            <a href="canais-3/band-news-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/band-news" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+            <div class="canal">
+          <div class="imagem">
+            <img src="logos/record-news.png" title="Record News" alt="Record News">
+          </div>
+          <div class="informacoes">
+            <h2><b>Record News</b></h2>
+            <p><b>Notícias</b></p>
+            <a href="canais-3/record-news-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="#" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+            <div class="canal">
+          <div class="imagem">
+            <img src="logos/cnn-brasil.png" title="CNN Brasil" alt="CNN Brasil">
+          </div>
+          <div class="informacoes">
+            <h2><b>CNN Brasil</b></h2>
+            <p><b>Notícias</b></p>
+            <a href="canais-3/cnn-brasil-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/cnn-brasil" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+            <div class="canal">
+          <div class="imagem">
+            <img src="logos/jovem-pan-news.png" title="Jovem Pan News" alt="Jovem Pan News">
+          </div>
+          <div class="informacoes">
+            <h2><b>Jovem Pan News</b></h2>
+            <p><b>Notícias</b></p>
+            <a href="canais-3/jovem-pan-news-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/jovem-pan-news" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+            <div class="canal">
+          <div class="imagem">
+            <img src="logos/sexy-hot.png" title="Sexy Hot" alt="Sexy Hot">
+          </div>
+          <div class="informacoes">
+            <h2><b>Sexy Hot</b></h2>
+            <p><b>Adulto + 18</b></p>
+            <a href="canais-3/sexy-hot-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/sexy-hot" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+            <div class="canal">
+          <div class="imagem">
+            <img src="logos/sex-prive.png" title="Sex Privé" alt="Sex Privé">
+          </div>
+          <div class="informacoes">
+            <h2><b>Sex Privé</b></h2>
+            <p><b>Adulto + 18</b></p>
+            <a href="canais-3/sex-prive-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/sexprive-brasileirinhas" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+            <div class="canal">
+          <div class="imagem">
+            <img src="logos/sextreme.png" title="Sextreme" alt="Sextreme">
+          </div>
+          <div class="informacoes">
+            <h2><b>Sextreme</b></h2>
+            <p><b>Adulto + 18</b></p>
+            <a href="canais-3/sextreme-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/sextreme-brazil" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+
+            <div class="canal">
+          <div class="imagem">
+            <img src="logos/playboy-tv.png" title="Playboy TV" alt="Playboy TV">
+          </div>
+          <div class="informacoes">
+            <h2><b>Playboy TV</b></h2>
+            <p><b>Adulto + 18</b></p>
+            <a href="canais-3/playboy-tv-ao-vivo.html" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Assistir Agora</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+            <a href="https://mi.tv/br/canais/playboy" target="_blank" style="display: block; margin: 0 auto; text-align: center;"><b>Programação</b></a>
+            <hr style="color: #ffffff; height: 4px; width: 100%;">
+                      
+          </div>
+        </div>
+            </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+
+<footer class="footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="politica-privacidade"><b>Política de Privacidade</b></a> |
+        <a href="termos-uso"><b>Termos de Uso</b></a> |
+        <a href="dmca"><b>DMCA</b></a>
+      </div>
+      <div class="copyright">
+        &copy; <span id="current-year"><b>2023</b></span> <b>Mega TV Online. Todos os direitos reservados</b>.
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://www.facebook.com/groups/kodimegatvoficial" class="floating-button" target="_blank">
+  <i class="fab fa-facebook"></i> 
+  </a>
+
 </body>
 </html>
